@@ -1,15 +1,140 @@
 @import-normalize; /* bring in normalize.css styles */
 
-body {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+body  {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-color: rgb(210, 219, 219);  */
+  font-family: sans-serif;
+  line-height: 1.5;
+  max-width: 1400px;
+  margin: auto; 
+ /* padding: 0 15px; */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+ul {
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+
+/* .container{
+  max-width: 1400px;
+   margin: auto; 
+  padding: 0 15px;
+  /* background-color: #4f4f68; 
+} */
+/*  */
+.theme-dark header{
+  color:  #110850;
+  background-color: #6a6a6d;
+  box-shadow: 0 2px 2px rgba(156, 154, 154, 0.2);
+}
+
+input {
+  color:  #d4d4e4;
+  background-color: #7e7575;
+  /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
+}
+
+ main{
+  color:  #eae9f2;
+  background-color: #292727;
+  /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
+} 
+
+.theme-light main{
+  color:  #110850;
+  background-color: #eae9f2;
+  /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
+} 
+.theme-dark {
+  color: #f2f2f2;
+  background-color:#292727;}
+
+.theme-light {
+  color: #080808;
+  background-color: #eae9f2;
+}
+
+
+
+.theme-dark main {
+  color:  #eae9f2;
+  background-color: #292727;
+  /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
+}
+
+.theme-dark div {
+  color:  #eae9f2;
+  background-color: #292727;
+  /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
+}
+.theme-dark input {
+  color:  #d4d4e4;
+  background-color: #7e7575;
+  /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
+}
+.theme-light input {
+  color:  #0d0d0e;
+  background-color: #c7dfee;
+  /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
+}
+
+
+.theme-light header{
+  color:  #110850;
+  background-color: #5e5a81;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+.theme-dark header{
+  color:  #110850;
+  background-color: #6a6a6d;
+  box-shadow: 0 2px 2px rgba(156, 154, 154, 0.2);
+}
+.theme-light header{
+  color:  #110850;
+  background-color: #5e5a81;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.theme-dark a{
+  color:  #e1dfee;
+  
+}
+
+
+
