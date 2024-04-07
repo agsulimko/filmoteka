@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { Suspense } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import Loader from "./Loader/Loader";
-
+import filmotekaIcon from "../helper/filmoteka.png";
 const StyledLink = styled(NavLink)`
   color: black;
 
@@ -40,6 +40,9 @@ const Layout = () => {
   return (
     <div className={css.container}>
       <header className={css.header}>
+        <StyledLink to="/">
+          <img src={filmotekaIcon} alt="Filmoteka" className={css.icon} />
+        </StyledLink>
         <ul className={css.listLayout}>
           <li>
             <StyledLink

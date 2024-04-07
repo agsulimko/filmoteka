@@ -31,25 +31,26 @@ const Home = () => {
         </label> */}
       <h1>Trending today</h1>
 
-      <div className={css.home}>  
-      {movies.map((mov, index) => {
-        return (
-          <Link key={index} to={`${mov.id}`} state={{ from: location }}>
-           <div className={css.home_div}>
-           <img
-          className="center-block img-responsive"
-          width="150px"
-          height="100%"
-          src={`https://image.tmdb.org/t/p/w500/${mov.poster_path}`}
-          alt={mov.title}
-          data-reactid=".1.1.0.0.1.0.0.0"
-          key="movie-poster"
-        />
-        {mov.title}</div> 
-
-          </Link>
-        );
-      })}
+      <div className={css.home}>
+        {movies.map((mov, index) => {
+          return (
+            <Link key={index} to={`${mov.id}`} state={{ from: location }}>
+              <div className={css.home_div}>
+                <img
+                  className="center-block img-responsive"
+                  width="150px"
+                  height="100%"
+                  src={`https://image.tmdb.org/t/p/w500/${mov.poster_path}`}
+                  alt={mov.title}
+                  data-reactid=".1.1.0.0.1.0.0.0"
+                  key="movie-poster"
+                />
+                {/* {mov.title} */}
+                {`${mov.title} (${mov.release_date.slice(0, 4)})`}
+              </div>
+            </Link>
+          );
+        })}
       </div>
       <script src="script.js"></script>
     </div>

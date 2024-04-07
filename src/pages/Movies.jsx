@@ -80,7 +80,7 @@ const Movies = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: "5px",
+            padding: "10px 5px",
             gap: "5px",
           }}
         >
@@ -134,7 +134,8 @@ const Movies = () => {
                     data-reactid=".1.1.0.0.1.0.0.0"
                     key="movie-poster"
                   />
-                  {mov.title}
+                  {/* {mov.title} */}
+                  {`${mov.title} (${mov.release_date.slice(0, 4)})`}
                 </div>
               </Link>
             </li>

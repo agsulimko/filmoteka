@@ -31,8 +31,35 @@ const MoviesDetails = () => {
         genres,
       } = await getMoviesTrending(movieId);
       setTitle(title);
+      const [year, month, day] = release_date.split("-");
+
+      // Преобразование месяца из числового формата в текстовый
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      const monthName = months[parseInt(month, 10) - 1];
+
+      // Объединение в нужном формате
+      const formattedDate = `${day} ${monthName} ${year}`;
+
+      // console.log(formattedDate);
+      // Вывод: "27 February 2024"
+
+      setRelease_date(formattedDate);
       setPoster_path(poster_path);
-      setRelease_date(release_date.slice(0, 4));
+
+      // setRelease_date(release_date.slice(0, 4));
 
       setOverview(overview);
       setVote_average(Math.round(vote_average * 10));
@@ -71,7 +98,9 @@ const MoviesDetails = () => {
           key="movie-poster"
         />
         <div>
-          <h2>{`${title}(${release_date})`}</h2>
+          {/* <h2>{`${title}(${release_date})`}</h2> */}
+          <h2>{`${title}`}</h2>
+          <h4>{release_date}</h4>
           <p>User Score:{` ${vote_average}%`}</p>
           <h3>Overview</h3>
           <>{overview}</>

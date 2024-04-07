@@ -21,6 +21,11 @@ margin: auto;
             gap: 50px;
             justify-content: center;
             padding-left: 0;
+           
+        }
+        a{
+            color: #110850;
+
         }
 
 .img{
@@ -31,4 +36,6 @@ margin: auto;
 .title{
     text-align: center;
 }
-        
+       h4{
+        color:#7c6ed6;
+       } 
