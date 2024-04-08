@@ -8,7 +8,7 @@
           
 }
 .cardCast{
-    border: 0.5px solid;
+    border: 0.5px solid gray;
     border-radius: 10px;
     overflow: hidden;
     background-color: rgb(218, 232, 232);

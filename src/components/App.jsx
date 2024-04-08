@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 import { lazy } from "react";
 import Loader from "./Loader/Loader";
+import Trailer from "./Trailer";
 // import Home from "../pages/Home";
 // import Movies from "../pages/Movies";
 // import MoviesDetails from "./MoviesDetails";
@@ -30,16 +31,17 @@ export const App = () => {
 
           <Route path="movies" element={<Movies />} />
           <Route path=":movieId" element={<MoviesDetails />}>
+            <Route path="trailer" element={<Trailer />} />
             <Route path="cast" element={<Cast />} />
 
             <Route path="reviews" element={<Reviews />} />
           </Route>
 
-          <Route path="movies/:movieId" element={<MoviesDetails />}>
+          {/* <Route path="movies/:movieId" element={<MoviesDetails />}>
             <Route path="cast" element={<Cast />} />
 
             <Route path="reviews" element={<Reviews />} />
-          </Route>
+          </Route> */}
         </Route>
       </Routes>
     </Suspense>

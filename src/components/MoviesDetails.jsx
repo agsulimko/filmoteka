@@ -120,6 +120,10 @@ const MoviesDetails = () => {
             <NavLink to={`/movies/${moveId}/reviews`}>Reviews</NavLink>
           </li> */}
           <li>
+            <Link to="trailer">Trailer</Link>
+          </li>
+
+          <li>
             <Link to="cast">Cast</Link>
           </li>
 
