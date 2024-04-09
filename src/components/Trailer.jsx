@@ -72,12 +72,12 @@ import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 // import ReactPlayer from "react-player";
-const trailerType = "Official Trailer";
+// const trailerType = "Official Trailer";
 
 const Trailer = () => {
   const { movieId } = useParams();
   const [videos, setVideos] = useState([]);
-  const [videoId, setVideoId] = useState(null);
+  //   const [videoId, setVideoId] = useState(null);
   useEffect(() => {
     const fetchVideos = async () => {
       try {
@@ -87,7 +87,7 @@ const Trailer = () => {
         const { results } = await response.json();
         console.log(results);
         if (results.length > 0) {
-          setVideoId(results[0].key);
+          //   setVideoId(results[0].key);
 
           setVideos(results);
         }
@@ -100,7 +100,12 @@ const Trailer = () => {
   }, [movieId]);
 
   const hasOfficialOrTrailer = (name) => {
-    return name.includes("Official") || name.includes("Trailer");
+    return (
+      name.includes("Official") ||
+      name.includes("Trailer") ||
+      name.includes("trailer") ||
+      name.includes("official")
+    );
   };
   return (
     // <div>
@@ -136,8 +141,9 @@ const Trailer = () => {
               <ReactPlayer
                 url={`https://www.youtube.com/watch?v=${video.key}`}
                 controls
-                width="100%"
-                height="400px"
+                // width="100%"
+                min-width="310px"
+                // height="400px"
               />
             </>
           )}

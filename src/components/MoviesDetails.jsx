@@ -130,6 +130,9 @@ const MoviesDetails = () => {
           <li>
             <Link to="reviews">Reviews</Link>
           </li>
+          <li>
+            <Link to="homepage">Home page</Link>
+          </li>
         </ul>
         {/* <Suspense fallback={<div>Laoding...</div>}> */}
         <Suspense fallback={<div>{Loader()}</div>}>
