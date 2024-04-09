@@ -69,12 +69,14 @@
 // export default Trailer;
 
 import React, { useState, useEffect } from "react";
+import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 // import ReactPlayer from "react-player";
+const trailerType = "Official Trailer";
 
 const Trailer = () => {
   const { movieId } = useParams();
-  //   const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState([]);
   const [videoId, setVideoId] = useState(null);
   useEffect(() => {
     const fetchVideos = async () => {
@@ -82,11 +84,13 @@ const Trailer = () => {
         const response = await fetch(
           `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=0649efc971b913d6bfebf656f94b5c92`
         );
-        const data = await response.json();
-        if (data.results.length > 0) {
-          setVideoId(data.results[0].key);
+        const { results } = await response.json();
+        console.log(results);
+        if (results.length > 0) {
+          setVideoId(results[0].key);
+
+          setVideos(results);
         }
-        // setVideos(data.results);
       } catch (error) {
         console.error("Error fetching videos:", error);
       }
@@ -95,6 +99,9 @@ const Trailer = () => {
     fetchVideos();
   }, [movieId]);
 
+  const hasOfficialOrTrailer = (name) => {
+    return name.includes("Official") || name.includes("Trailer");
+  };
   return (
     // <div>
     //   <div>Trailers:</div>
@@ -111,8 +118,48 @@ const Trailer = () => {
     // </div>
 
     <div>
-      <div>Trailer:</div>
-      {videoId && (
+      {/* <div>Trailer:</div> */}
+      {videos.map((video) => (
+        <div key={video.key}>
+          {/* {video.name === trailerType && ( */}
+          {hasOfficialOrTrailer(video.name) && (
+            <>
+              <h3>
+                {video.name} (
+                {new Date(video.published_at).toLocaleDateString("en-US", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
+                )
+              </h3>
+              <ReactPlayer
+                url={`https://www.youtube.com/watch?v=${video.key}`}
+                controls
+                width="100%"
+                height="400px"
+              />
+            </>
+          )}
+          {/* <h3>
+            {video.name} (
+            {new Date(video.published_at).toLocaleDateString("en-US", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+            )
+          </h3> */}
+          {/* <ReactPlayer
+            url={`https://www.youtube.com/watch?v=${video.key}`}
+            controls
+            width="100%"
+            height="400px"
+          /> */}
+        </div>
+      ))}
+
+      {/* {videoId && (
         <iframe
           title="Trailer"
           width="310px"
@@ -122,7 +169,7 @@ const Trailer = () => {
           //   frameborder="0"
           //   allowfullscreen
         ></iframe>
-      )}
+      )} */}
     </div>
   );
 };
