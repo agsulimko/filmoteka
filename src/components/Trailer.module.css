@@ -1,0 +1,27 @@
+.MoreTrailersNot {
+    margin: auto;
+}
+
+.container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 0 15px;
+    background-color: #eae9f2;
+}
+
+.DivMoreTrailes{
+
+display: flex;
+flex-direction: column;
+gap: 3px;
+
+}
+
+.DivButtonTrailes{
+    display: flex;
+        gap: 5px;
+}
+/* .DivTrailes{
+    display: flex;
+    gap:5px;
+} */
