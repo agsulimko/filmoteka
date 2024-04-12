@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import Loader from "./Loader/Loader";
 import filmotekaIcon from "../helper/filmoteka.png";
+import { Container } from "../styles/Container/Container";
 const StyledLink = styled(NavLink)`
   color: black;
 
@@ -38,46 +39,48 @@ const Layout = () => {
   }
 
   return (
-    <div className={css.container}>
-      <header className={css.header}>
-        <StyledLink to="/">
-          <img src={filmotekaIcon} alt="Filmoteka" className={css.icon} />
-        </StyledLink>
-        <ul className={css.listLayout}>
-          <li>
-            <StyledLink
-              // activeClassName={css.activeClassName}
-              // exact
-              // className={css.styledLink}
-              // activeClassName={css.active}
-              to="/"
-            >
-              Home
-            </StyledLink>
-          </li>
-          <li>
-            <StyledLink
-              // activeClassName={css.activeClassName}
-              // className={css.styledLink}
-              // activeClassName={css.active}
-              to="/movies"
-            >
-              Movies
-            </StyledLink>
-          </li>
-        </ul>
-        <label id="switch" className={css.switch}>
-          <input type="checkbox" onChange={toggleTheme} id="slider" />
-          <span className={css.slider + " " + css.round}></span>
-        </label>
-      </header>
-      <main>
-        {/* <Suspense fallback={<div>Laoding...</div>}> */}
-        <Suspense fallback={<div>{Loader()}</div>}>
-          <Outlet />
-        </Suspense>
-      </main>
-    </div>
+    <Container>
+      <div className={css.container}>
+        <header className={css.header}>
+          <StyledLink to="/">
+            <img src={filmotekaIcon} alt="Filmoteka" className={css.icon} />
+          </StyledLink>
+          <ul className={css.listLayout}>
+            <li>
+              <StyledLink
+                // activeClassName={css.activeClassName}
+                // exact
+                // className={css.styledLink}
+                // activeClassName={css.active}
+                to="/"
+              >
+                Home
+              </StyledLink>
+            </li>
+            <li>
+              <StyledLink
+                // activeClassName={css.activeClassName}
+                // className={css.styledLink}
+                // activeClassName={css.active}
+                to="/movies"
+              >
+                Movies
+              </StyledLink>
+            </li>
+          </ul>
+          <label id="switch" className={css.switch}>
+            <input type="checkbox" onChange={toggleTheme} id="slider" />
+            <span className={css.slider + " " + css.round}></span>
+          </label>
+        </header>
+        <main>
+          {/* <Suspense fallback={<div>Laoding...</div>}> */}
+          <Suspense fallback={<div>{Loader()}</div>}>
+            <Outlet />
+          </Suspense>
+        </main>
+      </div>
+    </Container>
   );
 };
 export default Layout;

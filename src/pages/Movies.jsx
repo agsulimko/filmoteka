@@ -11,6 +11,8 @@ import Button from "@mui/material/Button";
 import { useSearchParams } from "react-router-dom";
 const Movies = () => {
   const location = useLocation();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   const [movies, setMovies] = useState([]);
 
@@ -25,20 +27,21 @@ const Movies = () => {
 
   // const params = useParams();
   // console.log(params);
-  const fetchMovies = async () => {
+  const fetchMovies = async (page) => {
     try {
-      const { results } = await getAllMovies(query);
+      const { results, total_pages } = await getAllMovies(query, page);
 
       setMovies((prevMovies) => [...results]);
+      setTotalPages(total_pages);
     } catch (err) {
       console.log(err.message);
     }
   };
 
   useEffect(() => {
-    fetchMovies();
+    fetchMovies(currentPage);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [currentPage]);
 
   const handleInputQuery = (event) => {
     const textInput = event.target.value.trim().toLowerCase();
@@ -69,6 +72,14 @@ const Movies = () => {
   };
 
   // console.log(location);
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
+
   return (
     // <div className={css.divGoBack}>
 
@@ -142,6 +153,18 @@ const Movies = () => {
           );
         })}
       </ul>
+
+      <div className={css.pagination}>
+        <button onClick={handlePrevPage} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span className={css.span_pagination}>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          Next
+        </button>
+      </div>
     </div>
   );
 };

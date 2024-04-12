@@ -2,6 +2,14 @@ import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 import css from "./Trailer.module.css";
+import styled from "styled-components";
+const StyledReactPlayer = styled(ReactPlayer)`
+  margin: 0 auto 10px auto;
+
+  max-width: 100%;
+
+  height: auto;
+`;
 const Trailer = () => {
   const { movieId } = useParams();
   const [videos, setVideos] = useState([]);
@@ -14,7 +22,7 @@ const Trailer = () => {
           `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=0649efc971b913d6bfebf656f94b5c92`
         );
         const { results } = await response.json();
-        console.log(results);
+        // console.log(results);
         if (results.length > 0) {
           //   setVideoId(results[0].key);
 
@@ -44,14 +52,42 @@ const Trailer = () => {
   return (
     <>
       <div>
-        <div>
-          {/* <div>Trailer:</div> */}
-          {videos.map((video) => (
-            <div key={video.key}>
-              {/* {video.name === trailerType && ( */}
-              {hasOfficialOrTrailer(video.name) && (
-                <>
-                  <h5>
+        {videos.map((video) => (
+          <div key={video.key} className={css.DivPlayer1}>
+            {hasOfficialOrTrailer(video.name) && (
+              <div className={css.DivPlayer}>
+                <h5 className={css.h5}>
+                  {video.name} (
+                  {new Date(video.published_at).toLocaleDateString("en-US", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                  )
+                </h5>
+                <StyledReactPlayer
+                  url={`https://www.youtube.com/watch?v=${video.key}`}
+                  controls
+                />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div className={css.DivMoreTrailes}>
+        {videos.map((video) => (
+          <div key={video.key}>
+            {!hasOfficialOrTrailer(video.name) && (
+              <div className={css.DivPlayerName}>
+                <div className={css.DivButtonTrailes}>
+                  <button
+                    className={css.ButtonTrailes}
+                    onClick={() => playVideo(video.key)}
+                  >
+                    Play Video
+                  </button>
+                  <h5 className={css.h5_Title}>
                     {video.name} (
                     {new Date(video.published_at).toLocaleDateString("en-US", {
                       day: "numeric",
@@ -60,82 +96,21 @@ const Trailer = () => {
                     })}
                     )
                   </h5>
-                  <ReactPlayer
+                </div>
+                {videoKey === video.key && (
+                  <StyledReactPlayer
+                    className={css.Player}
                     url={`https://www.youtube.com/watch?v=${video.key}`}
                     controls
-                    // width="100%"
-                    min-width="310px"
-                    // height="400px"
                   />
-                </>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-      <div>
-        <h4> More trailers:</h4>
-
-        {/* {videos.map((video) => (
-          <div key={video.key}>
-            {" "}
-            {!hasOfficialOrTrailer(video.name) && <h4> More trailers:</h4>}
-            {hasOfficialOrTrailer(video.name) && (
-              <h4> We don't have any more trailers for this movie.</h4>
+                )}
+              </div>
             )}
           </div>
-        ))} */}
-
-        <div className={css.DivMoreTrailes}>
-          {videos.map((video) => (
-            <div key={video.key}>
-              {!hasOfficialOrTrailer(video.name) && (
-                <div>
-                  <div className={css.DivButtonTrailes}>
-                    <button onClick={() => playVideo(video.key)}>
-                      Play Video
-                    </button>
-                    <h5>
-                      {video.name} (
-                      {new Date(video.published_at).toLocaleDateString(
-                        "en-US",
-                        {
-                          day: "numeric",
-                          month: "long",
-                          year: "numeric",
-                        }
-                      )}
-                      )
-                    </h5>
-                  </div>
-                  {videoKey === video.key && (
-                    <ReactPlayer
-                      url={`https://www.youtube.com/watch?v=${video.key}`}
-                      controls
-                      width="100%"
-                      height="400px"
-                    />
-                  )}
-                </div>
-              )}
-            </div>
-          ))}
-          {videos.lengt && (
-            <h4> We don't have any more trailers for this movie.</h4>
-          )}
-        </div>
-
-        {/* <div>
-          {videos.map((video) => (
-            <div key={video.key}>
-              {videos.length === 0 && (
-                <p className={css.MoreTrailersNot}>
-                  We don't have any more trailers for this movie.
-                </p>
-              )}
-            </div>
-          ))}
-        </div> */}
+        ))}
+        {videos.length === 0 && (
+          <h4> We don't have any more trailers for this movie.</h4>
+        )}
       </div>
     </>
   );

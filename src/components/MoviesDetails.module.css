@@ -18,9 +18,11 @@ margin: auto;
 
         .listCast{
             display: flex;
-            gap: 50px;
-            justify-content: center;
+            /* gap: 50px;
+            justify-content: center; */
+            justify-content: space-evenly;
             padding-left: 0;
+            padding-bottom: 10px;
            
         }
         a{
@@ -35,6 +37,7 @@ margin: auto;
 /* fill | contain | cover | scale-down | none */
 .title{
     text-align: center;
+    margin-bottom: 15px;
 }
        h4{
         color:#7c6ed6;

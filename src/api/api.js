@@ -5,12 +5,15 @@ axios.defaults.params = {
   language: 'en-US',
 };
 
-export const getAllMoviesTrending = async () => {
+export const getAllMoviesTrending = async (page, limit, language) => {
   const { data } = await axios(`3/trending/movie/day`, {
-    // params: {
-    //   api_key: '0649efc971b913d6bfebf656f94b5c92',
-    //   language: 'en-US',
-    // },
+    params: {
+      page: page,
+      limit: limit,
+      //   api_key: '0649efc971b913d6bfebf656f94b5c92',
+      //   language: 'en-US',
+      // language: 'uk-UA',
+    },
   });
   console.log('getAllMoviesTrending=', data);
   return data;
@@ -40,19 +43,11 @@ export const getVideos = async moveId => {
   return data;
 };
 
-// =============video==================
-// export const getTrailer = async moveId => {
-//   // const { data } = await axios(`3/movie/${moveId}/homepage`);
-//   const { data } = await axios(`3/movie/${moveId}`, {});
-//   console.log('homepage(Trailer)=', data);
-//   return data;
-// };
-
-// ('https://api.themoviedb.org/3/search/movie?query=Jack+Reacher&api_key=0649efc971b913d6bfebf656f94b5c92');
-
-export const getAllMovies = async value => {
+export const getAllMovies = async (value, page, limit) => {
   const { data } = await axios(`3/search/movie`, {
     params: {
+      page: page,
+      limit: limit,
       // api_key: '0649efc971b913d6bfebf656f94b5c92',
       // // language: 'en-US',
       // original_language: 'en-US',

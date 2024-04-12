@@ -24,4 +24,12 @@ flex-wrap: wrap;
     .theme-light  .input{
         /* background-color: #7e7575; */
     }
-  
+  .pagination {
+      margin-top: 30px;
+      text-align: center;
+      padding-bottom: 80px;
+  }
+
+  .span_pagination {
+      margin: 0 10px;
+  }
