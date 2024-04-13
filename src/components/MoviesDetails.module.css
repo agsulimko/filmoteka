@@ -10,6 +10,12 @@ gap: 10px;
 margin: auto;
         }
 
+                .button_GoBack{
+                    background-color: #d9cfe4;
+                    border: 0.5px solid #110850;;
+                    border-radius: 5px;
+                }
+
 .divDetails{
     display: flex;
         flex-wrap: nowrap;

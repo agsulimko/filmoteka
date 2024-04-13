@@ -113,7 +113,9 @@ const MoviesDetails = () => {
       </section>
 
       <Link className={css.GoBack} to={backLinkLocationRef.current}>
-        <button type="button">Go back</button>
+        <button className={css.button_GoBack} type="button">
+          Go back
+        </button>
       </Link>
 
       {/* <Link to={location.state?.from ??'/movies'}> Go back</Link> */}
