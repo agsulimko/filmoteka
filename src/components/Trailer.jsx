@@ -47,7 +47,9 @@ const Trailer = () => {
       name.includes("Official") ||
       name.includes("Trailer") ||
       name.includes("trailer") ||
-      name.includes("official")
+      name.includes("official") ||
+      name.includes("трейлер") ||
+      name.includes("Трейлер")
     );
   };
 
