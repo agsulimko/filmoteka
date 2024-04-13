@@ -120,18 +120,18 @@ const MoviesDetails = () => {
 
       {/* <Link to={location.state?.from ??'/movies'}> Go back</Link> */}
       <div className={css.divDetails}>
-        <img
-          // className="center-block img-responsive"
-          className={css.img}
-          width="250px"
-          // height="100%"
-          src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-          alt={title}
-          data-reactid=".1.1.0.0.1.0.0.0"
-          key="movie-poster"
-        />
-        <div>
-          {/* <h2>{`${title}(${release_date})`}</h2> */}
+        <div className={css.movieDetailsText}>
+          {" "}
+          <img
+            // className="center-block img-responsive"
+            className={css.img}
+            width="250px"
+            // height="100%"
+            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+            alt={title}
+            data-reactid=".1.1.0.0.1.0.0.0"
+            key="movie-poster"
+          />
           <h2>{`${title}`}</h2>
           <h4>{release_date}</h4>
           <p>User Score:{` ${vote_average}%`}</p>

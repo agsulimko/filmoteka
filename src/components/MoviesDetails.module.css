@@ -20,8 +20,22 @@ margin: auto;
     display: flex;
         flex-wrap: nowrap;
         gap: 10px;
-        align-items: flex-start
+        /* align-items: flex; */
+    
+            align-items: flex-start;
+            /* Обтекание текста слева от изображения */
+            gap: 20px;
+            /* Промежуток между изображением и текстом */
+
         }
+
+              
+ .movieDetailsText {
+       flex: 1;
+              /* Занимает все доступное пространство в контейнере */
+            }
+            
+                
 
         .listCast{
             display: flex;
@@ -40,6 +54,8 @@ margin: auto;
 .img{
 
     object-fit: contain;
+   float: left; 
+    margin: 0 10px 10px 0;
 }
 /* fill | contain | cover | scale-down | none */
 .title{
