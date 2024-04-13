@@ -69,10 +69,22 @@ const Home = () => {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  // Используем локальное хранилище для сохранения выбранного языка
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    localStorage.getItem("selectedLanguage") || "en-US"
+  );
 
-  const fetchMovies = async (page) => {
+  // const [selectedLanguage, setSelectedLanguage] = useState("en-US");
+  // Значение по умолчанию - английский
+
+  const fetchMovies = async (page, language) => {
     try {
-      const { results, total_pages } = await getAllMoviesTrending(page);
+      // const { results, total_pages } = await getAllMoviesTrending(page);
+      const { results, total_pages } = await getAllMoviesTrending(
+        page,
+        language
+      );
+
       setMovies(results);
       setTotalPages(total_pages);
     } catch (err) {
@@ -81,8 +93,31 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchMovies(currentPage);
-  }, [currentPage]);
+    // Сохраняем выбранный язык в локальное хранилище при его изменении
+    localStorage.setItem("selectedLanguage", selectedLanguage);
+    fetchMovies(currentPage, selectedLanguage);
+    // Функция для обработки события изменения в локальном хранилище
+    const handleStorageChange = (e) => {
+      if (e.key === "selectedLanguage") {
+        setSelectedLanguage(e.newValue);
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+    // eslint-disable-next-line
+  }, [selectedLanguage]);
+
+  // useEffect(() => {
+  //   // Сохраняем выбранный язык в локальное хранилище при его изменении
+  //   localStorage.setItem("selectedLanguage", selectedLanguage);
+
+  //   fetchMovies(currentPage, selectedLanguage);
+  //   // eslint-disable-next-line
+  // }, [currentPage, selectedLanguage]);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -91,9 +126,23 @@ const Home = () => {
   const handlePrevPage = () => {
     setCurrentPage((prevPage) => prevPage - 1);
   };
-
+  // const handleLanguageChange = (e) => {
+  //   setSelectedLanguage(e.target.value);
+  // };
   return (
     <div className={css.homeMovies}>
+      <section className={css.selectedLanguage}>
+        <select
+          value={selectedLanguage}
+          // onChange={handleLanguageChange}
+          onChange={(e) => setSelectedLanguage(e.target.value)}
+        >
+          <option value="en-US">En</option>
+          <option value="de-DE">De</option>
+          <option value="uk-UA">Uk</option>
+          <option value="ru-RU">Ru</option>
+        </select>
+      </section>
       <h1>Trending today</h1>
 
       <div className={css.home}>

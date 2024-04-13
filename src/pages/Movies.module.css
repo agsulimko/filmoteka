@@ -6,11 +6,9 @@ flex-wrap: wrap;
  justify-content: center;
     /* background-color: rgb(212, 242, 232); */
 }
-/* .divGoBack{
-    display: flex;
-        flex-direction: column;
-        gap: 10px;
-} */
+.divGoBack{
+position: relative;
+} 
 .home{
     display: flex;
     flex-wrap: wrap;
@@ -33,3 +31,15 @@ flex-wrap: wrap;
   .span_pagination {
       margin: 0 10px;
   }
+  .selectedLanguage {
+      position: absolute;
+      top: -32px;
+    right: 76px;
+      
+  }
+
+@media screen and (min-width: 768px) {
+    .selectedLanguage {
+        right: 86px;
+    }
+}

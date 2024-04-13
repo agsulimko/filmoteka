@@ -3,6 +3,7 @@ import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 import css from "./Trailer.module.css";
 import styled from "styled-components";
+import { getVideos } from "api/api";
 const StyledReactPlayer = styled(ReactPlayer)`
   margin: 0 auto 10px auto;
 
@@ -14,14 +15,18 @@ const Trailer = () => {
   const { movieId } = useParams();
   const [videos, setVideos] = useState([]);
   const [videoKey, setVideoKey] = useState(null);
+  const [selectedLanguage] = useState(
+    localStorage.getItem("selectedLanguage") || "en-US"
+  );
   //   const [videoId, setVideoId] = useState(null);
   useEffect(() => {
-    const fetchVideos = async () => {
+    localStorage.setItem("selectedLanguage", selectedLanguage);
+    const fetchVideos = async (language) => {
       try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=0649efc971b913d6bfebf656f94b5c92`
-        );
-        const { results } = await response.json();
+        // const response = await fetch(
+        //   `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=0649efc971b913d6bfebf656f94b5c92`
+        // );
+        const { results } = await getVideos(movieId, language);
         // console.log(results);
         if (results.length > 0) {
           //   setVideoId(results[0].key);
@@ -33,8 +38,9 @@ const Trailer = () => {
       }
     };
 
-    fetchVideos();
-  }, [movieId]);
+    fetchVideos(selectedLanguage);
+    // eslint-disable-next-line
+  }, [movieId, selectedLanguage]);
 
   const hasOfficialOrTrailer = (name) => {
     return (

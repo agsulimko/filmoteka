@@ -10,10 +10,12 @@ const Cast = () => {
   const { movieId } = useParams();
   //   console.log("moveId=", moveId);
   const [castMovies, setCast] = useState([]);
-
-  const fetchCast = async () => {
+  const [selectedLanguage] = useState(
+    localStorage.getItem("selectedLanguage") || "en-US"
+  );
+  const fetchCast = async (selectedLanguage) => {
     try {
-      const { cast } = await getCast(movieId);
+      const { cast } = await getCast(movieId, selectedLanguage);
       // console.log(cast);
       setCast((prevCast) => [...cast]);
       // console.log(castMovies);
@@ -23,10 +25,11 @@ const Cast = () => {
   };
 
   useEffect(() => {
-    fetchCast();
+    localStorage.setItem("selectedLanguage", selectedLanguage);
+    fetchCast(selectedLanguage);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [selectedLanguage]);
 
   return (
     <div className={css.divCast}>
@@ -39,15 +42,19 @@ const Cast = () => {
                 className="center-block img-responsive"
                 width="150px"
                 // height="320px"
-                src={castMovie.profile_path ?`https://image.tmdb.org/t/p/w500/${castMovie.profile_path}` :defaultImage}
+                src={
+                  castMovie.profile_path
+                    ? `https://image.tmdb.org/t/p/w500/${castMovie.profile_path}`
+                    : defaultImage
+                }
                 alt={castMovie.name}
               />
               <p className={css.text}>{castMovie.name}</p>
               <p className={css.text}>{`Character: ${castMovie.character}`}</p>
             </div>
           );
-        } 
-      //   else {
+        }
+        //   else {
         //   return (
         //     <div className={css.cardCast} key={index}>
         //       <img

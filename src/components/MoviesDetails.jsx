@@ -11,7 +11,9 @@ const MoviesDetails = () => {
   // console.log(location);
   // console.log(backLinkLocationRef);
   const { movieId } = useParams();
-
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    localStorage.getItem("selectedLanguage") || "en-US"
+  );
   const [title, setTitle] = useState(null);
   const [poster_path, setPoster_path] = useState(null);
   const [release_date, setRelease_date] = useState(null);
@@ -20,7 +22,7 @@ const MoviesDetails = () => {
   const [genres, setGenres] = useState([]);
   const [error, setError] = useState("");
 
-  const fetchMovies = async () => {
+  const fetchMovies = async (language) => {
     try {
       const {
         poster_path,
@@ -29,7 +31,9 @@ const MoviesDetails = () => {
         release_date,
         vote_average,
         genres,
-      } = await getMoviesTrending(movieId);
+        // } = await getMoviesTrending(movieId);
+      } = await getMoviesTrending(movieId, language); // Передаем выбранный язык
+
       setTitle(title);
       const [year, month, day] = release_date.split("-");
 
@@ -74,13 +78,40 @@ const MoviesDetails = () => {
   };
   // console.log(movies);
   useEffect(() => {
-    fetchMovies();
+    // Сохраняем выбранный язык в локальное хранилище при его изменении
+    localStorage.setItem("selectedLanguage", selectedLanguage);
+    fetchMovies(selectedLanguage);
+    // Функция для обработки события изменения в локальном хранилище
+    const handleStorageChange = (e) => {
+      if (e.key === "selectedLanguage") {
+        setSelectedLanguage(e.newValue);
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [movieId]);
+  }, [movieId, selectedLanguage]);
 
   // console.log(location);
   return (
     <div className={css.divGoBack}>
+      <section className={css.selectedLanguage}>
+        <select
+          value={selectedLanguage}
+          // onChange={handleLanguageChange}
+          onChange={(e) => setSelectedLanguage(e.target.value)}
+        >
+          <option value="en-US">En</option>
+          <option value="de-DE">De</option>
+          <option value="uk-UA">Uk</option>
+          <option value="ru-RU">Ru</option>
+        </select>
+      </section>
+
       <Link className={css.GoBack} to={backLinkLocationRef.current}>
         <button type="button">Go back</button>
       </Link>

@@ -10,8 +10,13 @@
             flex-direction: row;
             justify-content: space-evenly;
             padding-left: 0;
-            gap:40px;
+            /* gap:40px; */
+            gap:10px;
 }
+@media screen and (min-width: 768px) {
+  .listLayout{gap: 40px;}
+}
+
 
 .header{
   display: flex;

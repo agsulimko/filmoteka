@@ -21,15 +21,23 @@ const Movies = () => {
   // const [searchedMovies, setSearchedMovies] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [searchQuery, setSearchQuery] = useSearchParams();
+
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    localStorage.getItem("selectedLanguage") || "en-US"
+  );
   const query = searchQuery.get("query") ?? "";
 
   // const ref = useRef(query);
 
   // const params = useParams();
   // console.log(params);
-  const fetchMovies = async (page) => {
+  const fetchMovies = async (page, language) => {
     try {
-      const { results, total_pages } = await getAllMovies(query, page);
+      const { results, total_pages } = await getAllMovies(
+        query,
+        page,
+        language
+      );
 
       setMovies((prevMovies) => [...results]);
       setTotalPages(total_pages);
@@ -39,9 +47,23 @@ const Movies = () => {
   };
 
   useEffect(() => {
-    fetchMovies(currentPage);
+    // Сохраняем выбранный язык в локальное хранилище при его изменении
+    localStorage.setItem("selectedLanguage", selectedLanguage);
+    fetchMovies(currentPage, selectedLanguage);
+    // Функция для обработки события изменения в локальном хранилище
+    const handleStorageChange = (e) => {
+      if (e.key === "selectedLanguage") {
+        setSelectedLanguage(e.newValue);
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage]);
+  }, [currentPage, selectedLanguage]);
 
   const handleInputQuery = (event) => {
     const textInput = event.target.value.trim().toLowerCase();
@@ -84,6 +106,18 @@ const Movies = () => {
     // <div className={css.divGoBack}>
 
     <div className={css.divGoBack}>
+      <section className={css.selectedLanguage}>
+        <select
+          value={selectedLanguage}
+          // onChange={handleLanguageChange}
+          onChange={(e) => setSelectedLanguage(e.target.value)}
+        >
+          <option value="en-US">En</option>
+          <option value="de-DE">De</option>
+          <option value="uk-UA">Uk</option>
+          <option value="ru-RU">Ru</option>
+        </select>
+      </section>
       {/* <Link to="/"> Go back</Link> */}
       <form onSubmit={handleSubmit}>
         <Box

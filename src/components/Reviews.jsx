@@ -4,12 +4,14 @@ import { useParams } from "react-router-dom";
 import css from "./Reviews.module.css";
 const Reviews = () => {
   const { movieId } = useParams();
-
+  const [selectedLanguage] = useState(
+    localStorage.getItem("selectedLanguage") || "en-US"
+  );
   const [reviewsMovies, setReviews] = useState([]);
 
-  const fetchReviews = async () => {
+  const fetchReviews = async (selectedLanguage) => {
     try {
-      const { results } = await getReviews(movieId);
+      const { results } = await getReviews(movieId, selectedLanguage);
 
       setReviews((prevReviews) => [...results]);
     } catch (err) {
@@ -18,13 +20,16 @@ const Reviews = () => {
   };
 
   useEffect(() => {
-    fetchReviews();
+    // localStorage.setItem("selectedLanguage", selectedLanguage);
+    fetchReviews(selectedLanguage);
+    // Функция для обработки события изменения в локальном хранилище
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [selectedLanguage]);
 
   if (reviewsMovies.length) {
     return (
-      <div className={css.container} >
+      <div className={css.container}>
         {reviewsMovies.map((reviewsMovie, index) => {
           return (
             <div key={index}>

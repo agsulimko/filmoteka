@@ -1,4 +1,5 @@
 .divGoBack {
+    position: relative;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -42,3 +43,18 @@ margin: auto;
        h4{
         color:#7c6ed6;
        } 
+.selectedLanguage {
+     position: absolute; 
+    top: -32px;
+    right: 76px;
+    
+    
+}
+
+
+
+ @media screen and (min-width: 768px) {
+     .selectedLanguage {
+         right: 86px;
+     }
+ }
