@@ -111,13 +111,13 @@ const Home = () => {
     // eslint-disable-next-line
   }, [selectedLanguage]);
 
-  // useEffect(() => {
-  //   // Сохраняем выбранный язык в локальное хранилище при его изменении
-  //   localStorage.setItem("selectedLanguage", selectedLanguage);
+  useEffect(() => {
+    // Сохраняем выбранный язык в локальное хранилище при его изменении
+    //   localStorage.setItem("selectedLanguage", selectedLanguage);
 
-  //   fetchMovies(currentPage, selectedLanguage);
-  //   // eslint-disable-next-line
-  // }, [currentPage, selectedLanguage]);
+    fetchMovies(currentPage, selectedLanguage);
+    // eslint-disable-next-line
+  }, [currentPage, selectedLanguage]);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
