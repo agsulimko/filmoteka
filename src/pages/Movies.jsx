@@ -116,6 +116,7 @@ const Movies = () => {
           <option value="de-DE">De</option>
           <option value="uk-UA">Uk</option>
           <option value="ru-RU">Ru</option>
+          <option value="ar-SA">العربية</option>
         </select>
       </section>
       {/* <Link to="/"> Go back</Link> */}
