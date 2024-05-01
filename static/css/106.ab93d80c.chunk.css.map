@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/106.ab93d80c.chunk.css","mappings":"AAIA,wBAHI,WAQJ,CALA,WACI,gBAAiB,CAEjB,cAEJ","sources":["components/HomePage.modules.css"],"sourcesContent":[".HomePageNot {\n    margin: auto;\n}\n\n.container {\n    max-width: 1400px;\n    margin: auto;\n    padding: 0 15px;\n    /* background-color: #eae9f2; */\n}"],"names":[],"sourceRoot":""}
