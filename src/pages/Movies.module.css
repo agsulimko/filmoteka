@@ -33,7 +33,7 @@ position: relative;
   }
   .selectedLanguage {
       position: absolute;
-      top: -32px;
+      top: -30px;
     right: 76px;
       
   }

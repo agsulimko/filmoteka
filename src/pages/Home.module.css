@@ -33,7 +33,7 @@ background-color: #eae9f2;
 }
 .selectedLanguage{
     position: absolute;
-    top:-32px;
+    top: -30px;
     right: 76px;
 }
 

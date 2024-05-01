@@ -106,19 +106,19 @@ const Movies = () => {
     // <div className={css.divGoBack}>
 
     <div className={css.divGoBack}>
-      <section className={css.selectedLanguage}>
-        <select
-          value={selectedLanguage}
-          // onChange={handleLanguageChange}
-          onChange={(e) => setSelectedLanguage(e.target.value)}
-        >
-          <option value="en-US">En</option>
-          <option value="de-DE">De</option>
-          <option value="uk-UA">Uk</option>
-          <option value="ru-RU">Ru</option>
-          <option value="ar-SA">العربية</option>
-        </select>
-      </section>
+      <select
+        className={css.selectedLanguage}
+        value={selectedLanguage}
+        // onChange={handleLanguageChange}
+        onChange={(e) => setSelectedLanguage(e.target.value)}
+      >
+        <option value="en-US">En</option>
+        <option value="de-DE">De</option>
+        <option value="uk-UA">Uk</option>
+        <option value="ru-RU">Ru</option>
+        <option value="ar-SA">العربية</option>
+      </select>
+
       {/* <Link to="/"> Go back</Link> */}
       <form onSubmit={handleSubmit}>
         <Box

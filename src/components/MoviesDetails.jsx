@@ -3,6 +3,7 @@ import { useParams, Link, Outlet, useLocation } from "react-router-dom";
 import { getMoviesTrending } from "../api/api";
 import css from "./MoviesDetails.module.css";
 import Loader from "./Loader/Loader";
+import sprite from "../helper/sprite.svg";
 const MoviesDetails = () => {
   const location = useLocation();
   const backLinkLocationRef = useRef(
@@ -99,22 +100,25 @@ const MoviesDetails = () => {
   // console.log(location);
   return (
     <div className={css.divGoBack}>
-      <section className={css.selectedLanguage}>
-        <select
-          value={selectedLanguage}
-          // onChange={handleLanguageChange}
-          onChange={(e) => setSelectedLanguage(e.target.value)}
-        >
-          <option value="en-US">En</option>
-          <option value="de-DE">De</option>
-          <option value="uk-UA">Uk</option>
-          <option value="ru-RU">Ru</option>
-          <option value="ar-SA">العربية</option>
-        </select>
-      </section>
-
+      <select
+        className={css.selectedLanguage}
+        value={selectedLanguage}
+        // onChange={handleLanguageChange}
+        onChange={(e) => setSelectedLanguage(e.target.value)}
+      >
+        <option value="en-US">En</option>
+        <option value="de-DE">De</option>
+        <option value="uk-UA">Uk</option>
+        <option value="ru-RU">Ru</option>
+        <option value="ar-SA">العربية</option>
+      </select>
       <Link className={css.GoBack} to={backLinkLocationRef.current}>
         <button className={css.button_GoBack} type="button">
+          <span>
+            <svg className={css.svgGoBack}>
+              <use href={`${sprite}#icon-arrow-left-gray`}></use>
+            </svg>
+          </span>
           Go back
         </button>
       </Link>

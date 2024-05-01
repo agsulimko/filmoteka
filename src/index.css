@@ -1,6 +1,20 @@
 /* index.css */
 @import-normalize; /* bring in normalize.css styles */
+@import '../node_modules/modern-normalize/modern-normalize.css';
 
+:root {
+  /*base colors*/
+  /* --black-color: #040404; */
+  --orange-color: #e6533c;
+  --light-orange-color: #ef8964;
+  --beige-color: #efa082;
+  --white-color: #efede8;
+  --gray-color: #303030;
+
+  /*success/error colors*/
+  --success-color: #3cbf61;
+  --error-color: #d80027;
+}
 
 h1,
 h2,
@@ -28,13 +42,13 @@ img {
 
 body  {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-color: rgb(210, 219, 219);  */
-  font-family: sans-serif;
+  /* font-family: sans-serif; */ 
   line-height: 1.5;
   max-width: 1400px;
   margin: auto; 
@@ -42,8 +56,8 @@ body  {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace; */
 }
 ul {
   list-style: none;
@@ -152,6 +166,12 @@ input {
 .theme-dark h4 {
   color: #e1dfee;
   color: #6a6970
+  
+}
+.theme-dark select {
+  /* background-color: #5e5a81; */
+  /* color: #e1dfee; */
+  /* color: #6a6970 */
   
 }
 

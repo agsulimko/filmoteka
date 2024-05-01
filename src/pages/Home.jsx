@@ -63,6 +63,9 @@ import React, { useState, useEffect } from "react";
 import { getAllMoviesTrending } from "../api/api";
 import { Link, useLocation } from "react-router-dom";
 import css from "./Home.module.css";
+// import styled from "styled-components";
+
+import { Select } from "./Home.styled";
 
 const Home = () => {
   const location = useLocation();
@@ -131,19 +134,22 @@ const Home = () => {
   // };
   return (
     <div className={css.homeMovies}>
-      <section className={css.selectedLanguage}>
-        <select
-          value={selectedLanguage}
-          // onChange={handleLanguageChange}
-          onChange={(e) => setSelectedLanguage(e.target.value)}
-        >
-          <option value="en-US">En</option>
-          <option value="de-DE">De</option>
-          <option value="uk-UA">Uk</option>
-          <option value="ru-RU">Ru</option>
-          <option value="ar-SA">العربية</option>
-        </select>
-      </section>
+      {/* <section className={css.selectedLanguage}> */}
+      {/* <div className={css.selectedLanguage}> */}
+      <Select
+        value={selectedLanguage}
+        // onChange={handleLanguageChange}
+        onChange={(e) => setSelectedLanguage(e.target.value)}
+        className={css.selectedLanguage}
+      >
+        <option value="en-US">En</option>
+        <option value="de-DE">De</option>
+        <option value="uk-UA">Uk</option>
+        <option value="ru-RU">Ru</option>
+        <option value="ar-SA">العربية</option>
+      </Select>
+      {/* </section> */}
+      {/* </div> */}
       <h1>Trending today</h1>
 
       <div className={css.home}>

@@ -45,19 +45,7 @@ const Layout = () => {
       setTheme("theme-dark");
     }
   }
-  // function handleLanguageChange(e) {
-  //   const selectedLanguage = e.target.value;
-  //   setSelectedLanguage(selectedLanguage);
-  //   localStorage.setItem("selectedLanguage", selectedLanguage);
-  // }
-  // function handleLanguageChange(e) {
-  //   const selectedLanguage = e.target.value;
-  //   setSelectedLanguage(selectedLanguage);
-  //   localStorage.setItem("selectedLanguage", selectedLanguage);
-  // }
-  // const handleLanguageChange = (e) => {
-  //   setSelectedLanguage(e.target.value);
-  // };
+
   return (
     <Container>
       <div className={css.container}>
@@ -67,42 +55,13 @@ const Layout = () => {
           </StyledLink>
           <ul className={css.listLayout}>
             <li>
-              <StyledLink
-                // activeClassName={css.activeClassName}
-                // exact
-                // className={css.styledLink}
-                // activeClassName={css.active}
-                to="/"
-              >
-                Home
-              </StyledLink>
+              <StyledLink to="/">Home</StyledLink>
             </li>
             <li>
-              <StyledLink
-                // activeClassName={css.activeClassName}
-                // className={css.styledLink}
-                // activeClassName={css.active}
-                to="/movies"
-              >
-                Movies
-              </StyledLink>
+              <StyledLink to="/movies">Movies</StyledLink>
             </li>
           </ul>
 
-          {/*  выпадающий список для выбора языка */}
-          {/* <div>
-            <select
-              value={selectedLanguage}
-              // onChange={(e) => setSelectedLanguage(e.target.value)}
-              onChange={(e) => handleLanguageChange(e)}
-              className={css.languageSelect}
-            >
-              <option value="en-US">English</option>
-              <option value="de-DE">Deutsch</option>
-              <option value="uk-UA">Ukrainisch</option>
-              <option value="ru-RU">Russian</option>
-            </select>
-          </div> */}
           <label id="switch" className={css.switch}>
             <input type="checkbox" onChange={toggleTheme} id="slider" />
             <span className={css.slider + " " + css.round}></span>
