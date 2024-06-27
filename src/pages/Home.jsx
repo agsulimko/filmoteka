@@ -10,7 +10,7 @@ const Home = () => {
   const location = useLocation();
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  // const [totalPages, setTotalPages] = useState(1);
   const [selectedLanguage, setSelectedLanguage] = useState(
     localStorage.getItem("selectedLanguage") || "en-US"
   );
@@ -26,7 +26,7 @@ const Home = () => {
         language
       );
       setMovies((prevMovies) => [...prevMovies, ...results]);
-      setTotalPages(total_pages);
+      // setTotalPages(total_pages);
       if (page >= total_pages) {
         setHasMore(false);
       }
