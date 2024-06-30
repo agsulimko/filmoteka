@@ -1,5 +1,7 @@
+// MoviesDatails.jsx
 import React, { useState, useEffect, Suspense, useRef } from "react";
 import { useParams, Link, Outlet, useLocation } from "react-router-dom";
+
 import { getMoviesTrending } from "../api/api";
 import css from "./MoviesDetails.module.css";
 import Loader from "./Loader/Loader";
@@ -98,6 +100,7 @@ const MoviesDetails = () => {
   }, [movieId, selectedLanguage]);
 
   // console.log(location);
+
   return (
     <div className={css.divGoBack}>
       <select
@@ -158,15 +161,21 @@ const MoviesDetails = () => {
             <NavLink to={`/movies/${moveId}/reviews`}>Reviews</NavLink>
           </li> */}
           <li>
-            <Link to="trailer">Trailer</Link>
+            <Link to="trailer" state={{ selectedLanguage }}>
+              Trailer
+            </Link>
           </li>
 
           <li>
-            <Link to="cast">Cast</Link>
+            <Link to="cast" state={{ selectedLanguage }}>
+              Cast
+            </Link>
           </li>
 
           <li>
-            <Link to="reviews">Reviews</Link>
+            <Link to="reviews" state={{ selectedLanguage }}>
+              Reviews
+            </Link>
           </li>
           <li>
             <Link to="homepage">Home page</Link>
@@ -174,7 +183,7 @@ const MoviesDetails = () => {
         </ul>
         {/* <Suspense fallback={<div>Laoding...</div>}> */}
         <Suspense fallback={<div>{Loader()}</div>}>
-          <Outlet />
+          <Outlet context={{ selectedLanguage }} />
         </Suspense>
       </div>
     </div>

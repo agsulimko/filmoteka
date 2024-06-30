@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { getReviews } from "../api/api";
-import { useParams } from "react-router-dom";
+import { useParams, useOutletContext } from "react-router-dom";
 import css from "./Reviews.module.css";
 const Reviews = () => {
   const { movieId } = useParams();
-  const [selectedLanguage] = useState(
-    localStorage.getItem("selectedLanguage") || "en-US"
-  );
+  // const [selectedLanguage] = useState(
+  //   localStorage.getItem("selectedLanguage") || "en-US"
+  // );
+  const { selectedLanguage } = useOutletContext();
   const [reviewsMovies, setReviews] = useState([]);
 
   const fetchReviews = async (selectedLanguage) => {

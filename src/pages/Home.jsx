@@ -10,7 +10,6 @@ const Home = () => {
   const location = useLocation();
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  // const [totalPages, setTotalPages] = useState(1);
   const [selectedLanguage, setSelectedLanguage] = useState(
     localStorage.getItem("selectedLanguage") || "en-US"
   );
@@ -25,11 +24,12 @@ const Home = () => {
         page,
         language
       );
-      setMovies((prevMovies) => [...prevMovies, ...results]);
-      // setTotalPages(total_pages);
-      if (page >= total_pages) {
-        setHasMore(false);
+      if (page === 1) {
+        setMovies(results); // Если страница первая, устанавливаем новый список фильмов
+      } else {
+        setMovies((prevMovies) => [...prevMovies, ...results]); // Иначе добавляем к текущему списку
       }
+      setHasMore(page < total_pages); // Устанавливаем hasMore в зависимости от текущей и общего числа страниц
     } catch (err) {
       console.log(err.message);
     } finally {
@@ -39,26 +39,12 @@ const Home = () => {
 
   useEffect(() => {
     localStorage.setItem("selectedLanguage", selectedLanguage);
-    fetchMovies(currentPage, selectedLanguage);
-
-    const handleStorageChange = (e) => {
-      if (e.key === "selectedLanguage") {
-        setSelectedLanguage(e.newValue);
-      }
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-    // eslint-disable-next-line
+    setCurrentPage(1); // Сбрасываем текущую страницу при изменении языка
+    setMovies([]); // Очищаем список фильмов при изменении языка
   }, [selectedLanguage]);
 
   useEffect(() => {
-    if (currentPage > 1) {
-      fetchMovies(currentPage, selectedLanguage);
-    }
+    fetchMovies(currentPage, selectedLanguage); // Вызываем загрузку фильмов при изменении currentPage или selectedLanguage
   }, [currentPage, selectedLanguage]);
 
   useEffect(() => {
@@ -69,10 +55,10 @@ const Home = () => {
         !loading &&
         hasMore
       ) {
-        setCurrentPage((prevPage) => prevPage + 1);
+        setCurrentPage((prevPage) => prevPage + 1); // Пагинация при скролле вниз
       }
       if (window.scrollY > 300 && movies.length > 40) {
-        setShowBackToTop(true);
+        setShowBackToTop(true); // Показать кнопку "Наверх" при прокрутке вниз
       } else {
         setShowBackToTop(false);
       }
@@ -83,7 +69,7 @@ const Home = () => {
   }, [loading, hasMore, movies.length]);
 
   const handleBackToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "smooth" }); // Плавный скролл наверх
   };
 
   return (

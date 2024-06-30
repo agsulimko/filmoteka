@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getCast } from "../api/api";
-import { useParams } from "react-router-dom";
+import { useParams, useOutletContext } from "react-router-dom";
 import css from "./Cast.module.css";
 import defaultImage from "../helper/imgonline-com-ua-Resize-uoGGMedYun.jpg";
 
@@ -10,9 +10,11 @@ const Cast = () => {
   const { movieId } = useParams();
   //   console.log("moveId=", moveId);
   const [castMovies, setCast] = useState([]);
-  const [selectedLanguage] = useState(
-    localStorage.getItem("selectedLanguage") || "en-US"
-  );
+  // const [selectedLanguage] = useState(
+  //   localStorage.getItem("selectedLanguage") || "en-US"
+  // );
+
+  const { selectedLanguage } = useOutletContext();
   const fetchCast = async (selectedLanguage) => {
     try {
       const { cast } = await getCast(movieId, selectedLanguage);

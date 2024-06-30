@@ -1,43 +1,34 @@
+// Trailer.jsx
 import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
-import { useParams } from "react-router-dom";
+import { useParams, useOutletContext } from "react-router-dom";
 import css from "./Trailer.module.css";
 import styled from "styled-components";
 import { getVideos } from "api/api";
+
 const StyledReactPlayer = styled(ReactPlayer)`
   margin: 0 auto 10px auto;
-
   max-width: 100%;
-
   height: auto;
 `;
+
 const Trailer = () => {
   const { movieId } = useParams();
+  const { selectedLanguage } = useOutletContext();
   const [videos, setVideos] = useState([]);
   const [videoKey, setVideoKey] = useState(null);
-  const [selectedLanguage] = useState(
-    localStorage.getItem("selectedLanguage") || "en-US"
-  );
-  //   const [videoId, setVideoId] = useState(null);
+
+  // Функция для загрузки видео с выбранным языком
+  const fetchVideos = async (language) => {
+    try {
+      const { results } = await getVideos(movieId, language);
+      setVideos(results); // Обновляем состояние videos с новым списком видео
+    } catch (error) {
+      console.error("Error fetching videos:", error);
+    }
+  };
+
   useEffect(() => {
-    localStorage.setItem("selectedLanguage", selectedLanguage);
-    const fetchVideos = async (language) => {
-      try {
-        // const response = await fetch(
-        //   `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=0649efc971b913d6bfebf656f94b5c92`
-        // );
-        const { results } = await getVideos(movieId, language);
-        // console.log(results);
-        if (results.length > 0) {
-          //   setVideoId(results[0].key);
-
-          setVideos(results);
-        }
-      } catch (error) {
-        console.error("Error fetching videos:", error);
-      }
-    };
-
     fetchVideos(selectedLanguage);
     // eslint-disable-next-line
   }, [movieId, selectedLanguage]);
