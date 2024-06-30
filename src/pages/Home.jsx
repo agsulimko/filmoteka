@@ -74,17 +74,19 @@ const Home = () => {
 
   return (
     <div className={css.homeMovies}>
-      <Select
-        value={selectedLanguage}
-        onChange={(e) => setSelectedLanguage(e.target.value)}
-        className={css.selectedLanguage}
-      >
-        <option value="en-US">En</option>
-        <option value="de-DE">De</option>
-        <option value="uk-UA">Uk</option>
-        <option value="ru-RU">Ru</option>
-        <option value="ar-SA">العربية</option>
-      </Select>
+      <div>
+        <Select
+          value={selectedLanguage}
+          onChange={(e) => setSelectedLanguage(e.target.value)}
+          className={css.selectedLanguage}
+        >
+          <option value="en-US">En</option>
+          <option value="de-DE">De</option>
+          <option value="uk-UA">Uk</option>
+          <option value="ru-RU">Ru</option>
+          <option value="ar-SA">العربية</option>
+        </Select>
+      </div>
       <h1>Trending today</h1>
 
       <div className={css.home}>
