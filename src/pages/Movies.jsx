@@ -128,6 +128,7 @@ const Movies = () => {
             justifyContent: "center",
             padding: "10px 5px",
             gap: "5px",
+            paddingTop: "50px",
           }}
         >
           <TextField
