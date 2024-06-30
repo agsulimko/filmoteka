@@ -1,6 +1,5 @@
 h1{
     text-align: center;
-    margin-top: 50px;
 }
 .homeMovies{
     
@@ -12,7 +11,7 @@ position: relative;
 .home{
 display: flex;
 flex-wrap: wrap;
-/* justify-content: center; */
+justify-content: center;
  gap:20px;
 }
 
@@ -40,15 +39,8 @@ background-color: #eae9f2;
 }
 
 @media screen and (min-width: 768px) {
-     .home {
-        display: flex;
-             justify-content: center;
-         }
     .selectedLanguage{right: 86px;}
-    
 }
-
-
 
 select{
     background-color: #cccccc;

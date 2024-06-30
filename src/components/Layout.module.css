@@ -13,31 +13,12 @@
             /* gap:40px; */
             gap:10px;
 }
- @media screen and (min-width: 200px) {
-   .header {
-     width: 320px;
-   }
- }
-
 @media screen and (min-width: 768px) {
   .listLayout{gap: 40px;}
-  .header{width: 740px;}
 }
 
 
-
- @media screen and (min-width: 1440px) {
-  .header {
-      width: 1440px;
-    }
- }
-
-
-
-
 .header{
-  position: fixed;
- 
   display: flex;
   /* justify-content: space-evenly; */
       justify-content: space-between;
@@ -46,8 +27,6 @@
   background-color: #6a6a6d;
   box-shadow: 0 2px 2px rgba(156, 154, 154, 0.2);
   padding: 0 15px;
-  
-  z-index: 100000;
 }
 
 .icon{
