@@ -5,11 +5,11 @@ axios.defaults.params = {
   // language: 'en-US',
 };
 
-export const getAllMoviesTrending = async (page, language) => {
+export const getAllMoviesTrending = async (page, language, limit) => {
   const { data } = await axios(`3/trending/movie/day`, {
     params: {
       page: page,
-      // limit: limit,
+      limit: limit,
       //   api_key: '0649efc971b913d6bfebf656f94b5c92',
       //   language: 'en-US',
       // language: 'uk-UA',

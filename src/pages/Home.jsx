@@ -1,10 +1,10 @@
 // ==========================================
-
 import React, { useState, useEffect } from "react";
 import { getAllMoviesTrending } from "../api/api";
 import { Link, useLocation } from "react-router-dom";
 import css from "./Home.module.css";
 import { Select, BackToTopButton } from "./Home.styled";
+import Loader from "components/Loader/Loader";
 
 const Home = () => {
   const location = useLocation();
@@ -20,16 +20,25 @@ const Home = () => {
   const fetchMovies = async (page, language) => {
     setLoading(true);
     try {
-      const { results, total_pages } = await getAllMoviesTrending(
-        page,
-        language
+      // const limit = 40; // Запрашиваем сразу 40 фильмов
+      const page1Results = await getAllMoviesTrending(page, language);
+      const page2Results = await getAllMoviesTrending(page + 1, language);
+      const combinedResults = [
+        ...page1Results.results,
+        ...page2Results.results,
+      ];
+      const total_pages = Math.max(
+        page1Results.total_pages,
+        page2Results.total_pages
       );
+
       if (page === 1) {
-        setMovies(results); // Если страница первая, устанавливаем новый список фильмов
+        setMovies(combinedResults); // Если страница первая, устанавливаем новый список фильмов
       } else {
-        setMovies((prevMovies) => [...prevMovies, ...results]); // Иначе добавляем к текущему списку
+        setMovies((prevMovies) => [...prevMovies, ...combinedResults]); // Иначе добавляем к текущему списку
       }
-      setHasMore(page < total_pages); // Устанавливаем hasMore в зависимости от текущей и общего числа страниц
+
+      setHasMore(page + 1 < total_pages); // Устанавливаем hasMore в зависимости от текущей и общего числа страниц
     } catch (err) {
       console.log(err.message);
     } finally {
@@ -55,9 +64,9 @@ const Home = () => {
         !loading &&
         hasMore
       ) {
-        setCurrentPage((prevPage) => prevPage + 1); // Пагинация при скролле вниз
+        setCurrentPage((prevPage) => prevPage + 2); // Пагинация при скролле вниз, увеличиваем на 2 страницы
       }
-      if (window.scrollY > 300 && movies.length > 40) {
+      if (window.scrollY > 300) {
         setShowBackToTop(true); // Показать кнопку "Наверх" при прокрутке вниз
       } else {
         setShowBackToTop(false);
@@ -66,7 +75,7 @@ const Home = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [loading, hasMore, movies.length]);
+  }, [loading, hasMore]);
 
   const handleBackToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" }); // Плавный скролл наверх
@@ -112,6 +121,8 @@ const Home = () => {
       <BackToTopButton $visible={showBackToTop} onClick={handleBackToTop}>
         ↑
       </BackToTopButton>
+      {loading && <div>{Loader()}</div>}
+      {/* {loading && <div>Loading...</div>} */}
     </div>
   );
 };
