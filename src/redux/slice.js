@@ -33,13 +33,15 @@ const moviesSlice = createSlice({
 
       .addCase(fetchMovies.pending, handlePending)
       .addCase(fetchMovies.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.status = 'succeeded';
         state.movies = action.payload;
-        const { page, results, total_pages, total_results } = action.payload;
+        const { page, results, total_pages } = action.payload;
         state.page = page;
-        state.results = [...state.results, ...results];
+        //  state.results = [...state.results, ...results];
+        // state.results = results;
+        state.results = page === 1 ? results : [...state.results, ...results];
         state.total_pages = total_pages;
-        state.total_results = total_results;
       })
       .addCase(fetchMovies.rejected, handleRejected);
   },
