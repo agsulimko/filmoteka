@@ -53,10 +53,10 @@ background-color: #d9cfe4;
         }
 
 .img{
-
+width: 315px;
     object-fit: contain;
    float: left; 
-    margin: 0 10px 10px 0;
+    margin: 0 0 10px 0;
 }
 /* fill | contain | cover | scale-down | none */
 .title{
@@ -79,7 +79,12 @@ background-color: #d9cfe4;
  @media screen and (min-width: 768px) {
      .selectedLanguage {
          right: 86px;
-     }
+}
+        .img {
+        width: 250px;
+        margin: 0 10px 10px 0;
+            }
+     
  }
 
 .svgGoBack{

@@ -135,7 +135,7 @@ const MoviesDetails = () => {
           <img
             // className="center-block img-responsive"
             className={css.img}
-            width="250px"
+            // width="250px"
             // height="100%"
             src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
             alt={title}
