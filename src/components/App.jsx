@@ -8,6 +8,8 @@ import { lazy } from "react";
 import Loader from "./Loader/Loader";
 import { ThemeProvider } from "@mui/material/styles"; // Import ThemeProvider
 import { theme } from "../styles/theme-file"; // Import your theme object
+import { useSelector } from "react-redux";
+import { selectLoading } from "../redux/selectors";
 const Home = lazy(() => import("../pages/Home"));
 const Movies = lazy(() => import("../pages/Movies"));
 const MoviesDetails = lazy(() => import("./MoviesDetails"));
@@ -20,9 +22,11 @@ const Reviews = lazy(() => import("./Reviews"));
 const HomePage = lazy(() => import("./HomePage"));
 
 export const App = () => {
+  const loading = useSelector(selectLoading);
   return (
     <ThemeProvider theme={theme}>
       <Suspense fallback={<div>{Loader()}</div>}>
+        {loading && <div>{Loader()}</div>}
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />

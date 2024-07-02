@@ -1,13 +1,15 @@
 // MoviesDatails.jsx
 import React, { useState, useEffect, Suspense, useRef } from "react";
 import { useParams, Link, Outlet, useLocation } from "react-router-dom";
-
+import { useSelector } from "react-redux";
+import { selectLoading } from "../redux/selectors";
 import { getMoviesTrending } from "../api/api";
 import css from "./MoviesDetails.module.css";
 import Loader from "./Loader/Loader";
 import sprite from "../helper/sprite.svg";
 const MoviesDetails = () => {
   const location = useLocation();
+  const loading = useSelector(selectLoading);
   const backLinkLocationRef = useRef(
     (location.state && location.state.from) ?? "/movies"
   );
@@ -186,6 +188,7 @@ const MoviesDetails = () => {
           <Outlet context={{ selectedLanguage }} />
         </Suspense>
       </div>
+      {loading && <div>{Loader()}</div>}
     </div>
   );
 };

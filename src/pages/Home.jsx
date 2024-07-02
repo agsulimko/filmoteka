@@ -368,6 +368,7 @@ import {
   selectLoading,
   selectTotalPages,
 } from "../redux/selectors";
+import Loader from "components/Loader/Loader";
 
 const Home = () => {
   const location = useLocation();
@@ -454,7 +455,7 @@ const Home = () => {
       <BackToTopButton $visible={showBackToTop} onClick={handleBackToTop}>
         ↑
       </BackToTopButton>
-      {loading && <div>Loading...</div>}
+      {loading && <div>{Loader()}</div>}
     </div>
   );
 };

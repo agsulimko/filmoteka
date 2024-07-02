@@ -2,7 +2,7 @@
     display: flex;
     display: flex;
 flex-wrap: wrap;
- gap:20px;
+ gap:15px;
  justify-content: center;
     /* background-color: rgb(212, 242, 232); */
 }
@@ -12,7 +12,7 @@ position: relative;
 .home{
     display: flex;
     flex-wrap: wrap;
-     gap:20px;
+     gap:15px;
     }
     
     .home_div{
@@ -34,7 +34,7 @@ position: relative;
   .selectedLanguage {
       position: absolute;
       top: -30px;
-    right: 76px;
+    right: 62px;
       
   }
 
@@ -42,4 +42,14 @@ position: relative;
     .selectedLanguage {
         right: 86px;
     }
+
+        .home {
+            gap: 20px;
+        }
+    
+        .selectedLanguage {
+            right: 76px;
+        }
+        
+                .listMovies {gap: 20px;}
 }

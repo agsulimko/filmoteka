@@ -9,8 +9,12 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
 import { useSearchParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectLoading } from "../redux/selectors";
+import Loader from "components/Loader/Loader";
 const Movies = () => {
   const location = useLocation();
+  const loading = useSelector(selectLoading);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
@@ -200,6 +204,7 @@ const Movies = () => {
           Next
         </button>
       </div>
+      {loading && <div>{Loader()}</div>}
     </div>
   );
 };
