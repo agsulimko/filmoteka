@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllMovies } from "../api/api";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useOutletContext } from "react-router-dom";
 import css from "./Movies.module.css";
 
 import TextField from "@mui/material/TextField";
@@ -17,7 +17,6 @@ const Movies = () => {
   const loading = useSelector(selectLoading);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-
   const [movies, setMovies] = useState([]);
 
   // const [searchInput, setSearchInput] = useState("");
@@ -26,11 +25,11 @@ const Movies = () => {
   const [inputValue, setInputValue] = useState("");
   const [searchQuery, setSearchQuery] = useSearchParams();
 
-  const [selectedLanguage, setSelectedLanguage] = useState(
-    localStorage.getItem("selectedLanguage") || "en-US"
-  );
+  // const [selectedLanguage, setSelectedLanguage] = useState(
+  //   localStorage.getItem("selectedLanguage") || "en-US"
+  // );
   const query = searchQuery.get("query") ?? "";
-
+  const { selectedLanguage } = useOutletContext();
   // const ref = useRef(query);
 
   // const params = useParams();
@@ -56,9 +55,9 @@ const Movies = () => {
     fetchMovies(currentPage, selectedLanguage);
     // Функция для обработки события изменения в локальном хранилище
     const handleStorageChange = (e) => {
-      if (e.key === "selectedLanguage") {
-        setSelectedLanguage(e.newValue);
-      }
+      // if (e.key === "selectedLanguage") {
+      //   setSelectedLanguage(e.newValue);
+      // }
     };
 
     window.addEventListener("storage", handleStorageChange);
@@ -110,19 +109,6 @@ const Movies = () => {
     // <div className={css.divGoBack}>
 
     <div className={css.divGoBack}>
-      <select
-        className={css.selectedLanguage}
-        value={selectedLanguage}
-        // onChange={handleLanguageChange}
-        onChange={(e) => setSelectedLanguage(e.target.value)}
-      >
-        <option value="en-US">En</option>
-        <option value="de-DE">De</option>
-        <option value="uk-UA">Uk</option>
-        <option value="ru-RU">Ru</option>
-        <option value="ar-SA">العربية</option>
-      </select>
-
       {/* <Link to="/"> Go back</Link> */}
       <form onSubmit={handleSubmit}>
         <Box

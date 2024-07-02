@@ -6,6 +6,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import Loader from "./Loader/Loader";
 import filmotekaIcon from "../helper/filmoteka.png";
 import { Container } from "../styles/Container/Container";
+
 const StyledLink = styled(NavLink)`
   color: black;
 
@@ -15,13 +16,13 @@ const StyledLink = styled(NavLink)`
 `;
 
 const Layout = () => {
-  const [selectedLanguage] = useState(
+  const [selectedLanguage, setSelectedLanguage] = useState(
     localStorage.getItem("selectedLanguage") || "en-US"
   );
 
   useEffect(() => {
     // Сохраняем выбранный язык в локальное хранилище при его изменении
-    // localStorage.setItem("selectedLanguage", selectedLanguage);
+    localStorage.setItem("selectedLanguage", selectedLanguage);
 
     // Check if the theme is set in local storage, if not set the default light theme
     if (!localStorage.getItem("theme")) {
@@ -55,12 +56,28 @@ const Layout = () => {
           </StyledLink>
           <ul className={css.listLayout}>
             <li>
-              <StyledLink to="/">Home</StyledLink>
+              <StyledLink to="/" state={{ selectedLanguage }}>
+                Home
+              </StyledLink>
             </li>
             <li>
-              <StyledLink to="/movies">Movies</StyledLink>
+              <StyledLink to="/movies" state={{ selectedLanguage }}>
+                Movies
+              </StyledLink>
             </li>
           </ul>
+
+          <select
+            value={selectedLanguage}
+            onChange={(e) => setSelectedLanguage(e.target.value)}
+            className={css.selectedLanguage}
+          >
+            <option value="en-US">En</option>
+            <option value="de-DE">De</option>
+            <option value="uk-UA">Uk</option>
+            <option value="ru-RU">Ru</option>
+            <option value="ar-SA">العربية</option>
+          </select>
 
           <label id="switch" className={css.switch}>
             <input type="checkbox" onChange={toggleTheme} id="slider" />
@@ -70,7 +87,7 @@ const Layout = () => {
         <main>
           {/* <Suspense fallback={<div>Laoding...</div>}> */}
           <Suspense fallback={<div>{Loader()}</div>}>
-            <Outlet />
+            <Outlet context={{ selectedLanguage }} />
           </Suspense>
         </main>
       </div>

@@ -358,10 +358,10 @@
 // ==========================================
 // Redux-toolkit бесконечный скролл
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useOutletContext } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import css from "./Home.module.css";
-import { Select, BackToTopButton } from "./Home.styled";
+import { BackToTopButton } from "./Home.styled";
 import { fetchMovies } from "../redux/thunks";
 import {
   selectMovies,
@@ -377,10 +377,11 @@ const Home = () => {
   const loading = useSelector(selectLoading);
   const totalPages = useSelector(selectTotalPages);
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedLanguage, setSelectedLanguage] = useState(
-    localStorage.getItem("selectedLanguage") || "en-US"
-  );
+  // const [selectedLanguage, setSelectedLanguage] = useState(
+  //   localStorage.getItem("selectedLanguage") || "en-US"
+  // );
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const { selectedLanguage } = useOutletContext(); // Получаем selectedLanguage из контекста
 
   useEffect(() => {
     localStorage.setItem("selectedLanguage", selectedLanguage);
@@ -421,19 +422,6 @@ const Home = () => {
 
   return (
     <div className={css.homeMovies}>
-      <div>
-        <Select
-          value={selectedLanguage}
-          onChange={(e) => setSelectedLanguage(e.target.value)}
-          className={css.selectedLanguage}
-        >
-          <option value="en-US">En</option>
-          <option value="de-DE">De</option>
-          <option value="uk-UA">Uk</option>
-          <option value="ru-RU">Ru</option>
-          <option value="ar-SA">العربية</option>
-        </Select>
-      </div>
       <h1>Trending today</h1>
 
       <div className={css.home}>

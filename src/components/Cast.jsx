@@ -27,7 +27,7 @@ const Cast = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem("selectedLanguage", selectedLanguage);
+    // localStorage.setItem("selectedLanguage", selectedLanguage);
     fetchCast(selectedLanguage);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

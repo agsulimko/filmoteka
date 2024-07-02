@@ -1,6 +1,12 @@
 // MoviesDatails.jsx
 import React, { useState, useEffect, Suspense, useRef } from "react";
-import { useParams, Link, Outlet, useLocation } from "react-router-dom";
+import {
+  useParams,
+  Link,
+  Outlet,
+  useLocation,
+  useOutletContext,
+} from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectLoading } from "../redux/selectors";
 import { getMoviesTrending } from "../api/api";
@@ -16,9 +22,9 @@ const MoviesDetails = () => {
   // console.log(location);
   // console.log(backLinkLocationRef);
   const { movieId } = useParams();
-  const [selectedLanguage, setSelectedLanguage] = useState(
-    localStorage.getItem("selectedLanguage") || "en-US"
-  );
+  // const [selectedLanguage, setSelectedLanguage] = useState(
+  //   localStorage.getItem("selectedLanguage") || "en-US"
+  // );
   const [title, setTitle] = useState(null);
   const [poster_path, setPoster_path] = useState(null);
   const [release_date, setRelease_date] = useState(null);
@@ -26,6 +32,7 @@ const MoviesDetails = () => {
   const [vote_average, setVote_average] = useState(null);
   const [genres, setGenres] = useState([]);
   const [error, setError] = useState("");
+  const { selectedLanguage } = useOutletContext(); // Получаем selectedLanguage из контекста
 
   const fetchMovies = async (language) => {
     try {
@@ -88,9 +95,9 @@ const MoviesDetails = () => {
     fetchMovies(selectedLanguage);
     // Функция для обработки события изменения в локальном хранилище
     const handleStorageChange = (e) => {
-      if (e.key === "selectedLanguage") {
-        setSelectedLanguage(e.newValue);
-      }
+      // if (e.key === "selectedLanguage") {
+      //   setSelectedLanguage(e.newValue);
+      // }
     };
 
     window.addEventListener("storage", handleStorageChange);
@@ -105,18 +112,7 @@ const MoviesDetails = () => {
 
   return (
     <div className={css.divGoBack}>
-      <select
-        className={css.selectedLanguage}
-        value={selectedLanguage}
-        // onChange={handleLanguageChange}
-        onChange={(e) => setSelectedLanguage(e.target.value)}
-      >
-        <option value="en-US">En</option>
-        <option value="de-DE">De</option>
-        <option value="uk-UA">Uk</option>
-        <option value="ru-RU">Ru</option>
-        <option value="ar-SA">العربية</option>
-      </select>
+    
       <Link className={css.GoBack} to={backLinkLocationRef.current}>
         <button className={css.button_GoBack} type="button">
           <span>
