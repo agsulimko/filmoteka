@@ -35,15 +35,18 @@ background-color: #eae9f2;
 .selectedLanguage{
     position: absolute;
     top: -30px;
-    right: 76px;
+    right: 62px;
 }
 
 @media screen and (min-width: 768px) {
     .selectedLanguage{right: 86px;}
 
-        .home {
-            gap: 20px;
+ .home {    
+gap: 20px;
         }
+.selectedLanguage {
+right: 76px;
+                }
 }
 
 select{
