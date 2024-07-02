@@ -12,7 +12,7 @@ position: relative;
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
- gap:20px;
+ gap:15px;
 }
 
 .home_div{
@@ -40,6 +40,10 @@ background-color: #eae9f2;
 
 @media screen and (min-width: 768px) {
     .selectedLanguage{right: 86px;}
+
+        .home {
+            gap: 20px;
+        }
 }
 
 select{
