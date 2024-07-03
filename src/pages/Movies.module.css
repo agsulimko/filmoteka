@@ -1,3 +1,13 @@
+.divForm{
+    position: fixed;
+    background-color: rgba(239, 237, 232, 0.6);
+}
+
+
+.box {
+    flex-direction: column;
+}
+
 .listMovies{
     display: flex;
     display: flex;
@@ -8,6 +18,7 @@ flex-wrap: wrap;
 }
 .divGoBack{
 position: relative;
+padding-top: 40px;
 } 
 .home{
     display: flex;
@@ -42,14 +53,22 @@ position: relative;
     .selectedLanguage {
         right: 86px;
     }
-
-        .home {
-            gap: 20px;
+ .home {
+ gap: 20px;
+        }   
+.selectedLanguage {
+  right: 76px;
         }
-    
-        .selectedLanguage {
-            right: 76px;
-        }
-        
-                .listMovies {gap: 20px;}
+    .listMovies {gap: 20px;}
+    .box{
+        flex-direction: row;
+    }
+    .divForm{
+      padding: 0px 168px;  
+    }
 }
+
+ @media screen and (min-width: 1440px) {
+    .divForm {
+            padding: 0px 498px;
+ }}

@@ -110,50 +110,53 @@ const Movies = () => {
 
     <div className={css.divGoBack}>
       {/* <Link to="/"> Go back</Link> */}
-      <form onSubmit={handleSubmit}>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "10px 5px",
-            gap: "5px",
-          }}
-        >
-          <TextField
-            className={css.input}
-            type="text"
-            //  autocomplete="off"
-            //  autofocus
-            //  placeholder="Search images and photos"
-            name="title"
-            size="small"
-            sx={{ m: 1, width: "35ch", margin: 0 }}
-            style={{ backgroundColor: "#7e7575", color: "white" }}
-            // className="form-control"
-            onChange={handleInputQuery}
-            value={query || ""}
-            // Устанавливаем пустую строку, если значение query равно null
-            id="input-with-sx"
-            label="Search movies"
-            variant="outlined"
-
-            // margin="dense"
-          />
-          <Button
-            className={css.button}
-            type="submit"
-            variant="outlined"
-            style={{
-              padding: "6.5px",
+      <div className={css.divForm}>
+        <form onSubmit={handleSubmit}>
+          <Box
+            className={css.box}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "10px 2px",
+              gap: "5px",
             }}
           >
-            Search
-          </Button>
-        </Box>
+            <TextField
+              className={css.input}
+              type="text"
+              //  autocomplete="off"
+              //  autofocus
+              //  placeholder="Search images and photos"
+              name="title"
+              size="small"
+              sx={{ m: 1, width: "35ch", margin: 0 }}
+              style={{ backgroundColor: "#7e7575", color: "white" }}
+              // className="form-control"
+              onChange={handleInputQuery}
+              value={query || ""}
+              // Устанавливаем пустую строку, если значение query равно null
+              id="input-with-sx"
+              label="Search movies"
+              variant="outlined"
 
-        <Stack spacing={2} direction="row"></Stack>
-      </form>
+              // margin="dense"
+            />
+            <Button
+              className={css.button}
+              type="submit"
+              variant="outlined"
+              style={{
+                padding: "6.5px",
+              }}
+            >
+              Search
+            </Button>
+          </Box>
+
+          <Stack spacing={2} direction="row"></Stack>
+        </form>
+      </div>
 
       <ul className={css.listMovies}>
         {movies.map((mov, index) => {
