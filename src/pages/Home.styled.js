@@ -22,6 +22,6 @@ const BackToTopButton = styled.button`
   font-size: 24px;
   line-height: 50px;
   text-align: center;
-  z-index: 1000;
+  z-index: 10000;
 `;
 export { Select, BackToTopButton };
