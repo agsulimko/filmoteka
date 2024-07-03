@@ -16,8 +16,8 @@ const fetchPage = async (page, language) => {
 };
 
 // 40  фильмов на странице
-export const fetchMovies = createAsyncThunk(
-  'movies/fetchMovies',
+export const fetchAllMoviesTrending = createAsyncThunk(
+  'movies/fetchAllMoviesTrending',
   async ({ page, language }, { rejectWithValue }) => {
     // try {
     //   const response = await axios.get('3/trending/movie/day', {

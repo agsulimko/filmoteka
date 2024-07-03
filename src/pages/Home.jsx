@@ -362,7 +362,7 @@ import { Link, useLocation, useOutletContext } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import css from "./Home.module.css";
 import { BackToTopButton } from "./Home.styled";
-import { fetchMovies } from "../redux/thunks";
+import { fetchAllMoviesTrending } from "../redux/thunks";
 import {
   selectMovies,
   selectLoading,
@@ -386,7 +386,7 @@ const Home = () => {
   useEffect(() => {
     localStorage.setItem("selectedLanguage", selectedLanguage);
     setCurrentPage(1); // Reset current page when language changes
-    dispatch(fetchMovies({ page: 2, language: selectedLanguage }));
+    dispatch(fetchAllMoviesTrending({ page: 2, language: selectedLanguage }));
   }, [dispatch, selectedLanguage]);
 
   useEffect(() => {
@@ -412,7 +412,12 @@ const Home = () => {
 
   useEffect(() => {
     if (currentPage > 1 && currentPage <= totalPages) {
-      dispatch(fetchMovies({ page: currentPage, language: selectedLanguage }));
+      dispatch(
+        fetchAllMoviesTrending({
+          page: currentPage,
+          language: selectedLanguage,
+        })
+      );
     }
   }, [dispatch, currentPage, selectedLanguage, totalPages]);
 

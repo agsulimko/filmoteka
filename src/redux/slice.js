@@ -1,7 +1,7 @@
 // slice.js
 import { createSlice } from '@reduxjs/toolkit';
 
-import { fetchMovies } from './thunks';
+import { fetchAllMoviesTrending } from './thunks';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -31,19 +31,18 @@ const moviesSlice = createSlice({
   extraReducers: builder => {
     builder
 
-      .addCase(fetchMovies.pending, handlePending)
-      .addCase(fetchMovies.fulfilled, (state, action) => {
+      .addCase(fetchAllMoviesTrending.pending, handlePending)
+      .addCase(fetchAllMoviesTrending.fulfilled, (state, action) => {
         state.isLoading = false;
         state.status = 'succeeded';
         state.movies = action.payload;
         const { page, results, total_pages } = action.payload;
         state.page = page;
-        //  state.results = [...state.results, ...results];
-        // state.results = results;
+
         state.results = page === 1 ? results : [...state.results, ...results];
         state.total_pages = total_pages;
       })
-      .addCase(fetchMovies.rejected, handleRejected);
+      .addCase(fetchAllMoviesTrending.rejected, handleRejected);
   },
 });
 
