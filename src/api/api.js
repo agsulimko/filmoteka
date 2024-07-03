@@ -6,7 +6,7 @@ axios.defaults.params = {
 };
 
 export const getAllMoviesTrending = async (page, language, limit) => {
-  const { data } = await axios(`3/trending/movie/day`, {
+  const response = await axios(`3/trending/movie/day`, {
     params: {
       page: page,
       limit: limit,
@@ -17,8 +17,22 @@ export const getAllMoviesTrending = async (page, language, limit) => {
     },
   });
   // console.log('getAllMoviesTrending=', data);
-  return data;
+  return response.data.results;
 };
+// export const getAllMoviesTrending = async (page, language, limit) => {
+//   const { data } = await axios(`3/trending/movie/day`, {
+//     params: {
+//       page: page,
+//       limit: limit,
+//       //   api_key: '0649efc971b913d6bfebf656f94b5c92',
+//       //   language: 'en-US',
+//       // language: 'uk-UA',
+//       language: language,
+//     },
+//   });
+//   // console.log('getAllMoviesTrending=', data);
+//   return data;
+// };
 
 export const getMoviesTrending = async (moveId, language) => {
   const { data } = await axios(`3/movie/${moveId}`, {
@@ -97,3 +111,10 @@ export const getAllMovies = async (value, page, language) => {
   // console.log('getAllMovies=>>', data);
   return data;
 };
+
+// export const fetchPage = async (page, language) => {
+//   const response = await axios.get('3/trending/movie/day', {
+//     params: { page, language },
+//   });
+//   return response.data.results;
+// };
