@@ -112,7 +112,6 @@ const MoviesDetails = () => {
 
   return (
     <div className={css.divGoBack}>
-    
       <Link className={css.GoBack} to={backLinkLocationRef.current}>
         <button className={css.button_GoBack} type="button">
           <span>
@@ -180,11 +179,11 @@ const MoviesDetails = () => {
           </li>
         </ul>
         {/* <Suspense fallback={<div>Laoding...</div>}> */}
-        <Suspense fallback={<div>{Loader()}</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet context={{ selectedLanguage }} />
         </Suspense>
       </div>
-      {loading && <div>{Loader()}</div>}
+      {loading && <Loader />}
     </div>
   );
 };

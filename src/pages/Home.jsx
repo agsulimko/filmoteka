@@ -357,6 +357,7 @@
 
 // ==========================================
 // Redux-toolkit бесконечный скролл
+// Home.jsx
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useOutletContext } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -448,7 +449,7 @@ const Home = () => {
       <BackToTopButton $visible={showBackToTop} onClick={handleBackToTop}>
         ↑
       </BackToTopButton>
-      {loading && <div>{Loader()}</div>}
+      {loading && <Loader />}
     </div>
   );
 };

@@ -193,7 +193,7 @@ const Movies = () => {
           Next
         </button>
       </div>
-      {loading && <div>{Loader()}</div>}
+      {loading && <Loader />}
     </div>
   );
 };

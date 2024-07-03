@@ -6,6 +6,7 @@ axios.defaults.params = {
 };
 
 export const getAllMoviesTrending = async (page, language, limit) => {
+  //   const { data } = await axios(`3/trending/movie/day`, {
   const response = await axios(`3/trending/movie/day`, {
     params: {
       page: page,
@@ -18,30 +19,12 @@ export const getAllMoviesTrending = async (page, language, limit) => {
   });
   // console.log('getAllMoviesTrending=', data);
   return response.data.results;
+  // return data;
 };
-// export const getAllMoviesTrending = async (page, language, limit) => {
-//   const { data } = await axios(`3/trending/movie/day`, {
-//     params: {
-//       page: page,
-//       limit: limit,
-//       //   api_key: '0649efc971b913d6bfebf656f94b5c92',
-//       //   language: 'en-US',
-//       // language: 'uk-UA',
-//       language: language,
-//     },
-//   });
-//   // console.log('getAllMoviesTrending=', data);
-//   return data;
-// };
 
 export const getMoviesTrending = async (moveId, language) => {
   const { data } = await axios(`3/movie/${moveId}`, {
     params: {
-      // page: page,
-      // limit: limit,
-      //   api_key: '0649efc971b913d6bfebf656f94b5c92',
-      //   language: 'en-US',
-      // language: 'uk-UA',
       language: language,
     },
   });
@@ -52,11 +35,6 @@ export const getMoviesTrending = async (moveId, language) => {
 export const getCast = async (moveId, language) => {
   const { data } = await axios(`3/movie/${moveId}/credits`, {
     params: {
-      // page: page,
-      // limit: limit,
-      //   api_key: '0649efc971b913d6bfebf656f94b5c92',
-      //   language: 'en-US',
-      // language: 'uk-UA',
       language: language,
     },
   });
@@ -67,11 +45,6 @@ export const getCast = async (moveId, language) => {
 export const getReviews = async (moveId, language) => {
   const { data } = await axios(`3/movie/${moveId}/reviews`, {
     params: {
-      // page: page,
-      // limit: limit,
-      //   api_key: '0649efc971b913d6bfebf656f94b5c92',
-      //   language: 'en-US',
-      // language: 'uk-UA',
       language: language,
     },
   });
@@ -82,11 +55,6 @@ export const getReviews = async (moveId, language) => {
 export const getVideos = async (moveId, language) => {
   const { data } = await axios(`3/movie/${moveId}/videos`, {
     params: {
-      // page: page,
-      // limit: limit,
-      //   api_key: '0649efc971b913d6bfebf656f94b5c92',
-      //   language: 'en-US',
-      // language: 'uk-UA',
       language: language,
     },
   });
