@@ -4,8 +4,9 @@ import css from "./Loader.module.css";
 
 const Loader = () => {
   return (
-    <div className={css.loaderWrap}>
+    <div className={css.loaderWrap} style={{ backgroundColor: "transparent" }}>
       <ColorRing
+        className={css.loaderWrap}
         visible={true}
         height="80"
         width="80"

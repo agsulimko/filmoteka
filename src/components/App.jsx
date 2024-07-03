@@ -25,8 +25,8 @@ export const App = () => {
   const loading = useSelector(selectLoading);
   return (
     <ThemeProvider theme={theme}>
-      <Suspense fallback={<div>{Loader()}</div>}>
-        {loading && <div>{Loader()}</div>}
+      <Suspense fallback={<Loader />}>
+        {loading && <Loader />}
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />

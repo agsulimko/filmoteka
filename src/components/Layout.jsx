@@ -86,7 +86,7 @@ const Layout = () => {
         </header>
         <main>
           {/* <Suspense fallback={<div>Laoding...</div>}> */}
-          <Suspense fallback={<div>{Loader()}</div>}>
+          <Suspense fallback={<Loader />}>
             <Outlet context={{ selectedLanguage }} />
           </Suspense>
         </main>
