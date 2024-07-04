@@ -1,3 +1,4 @@
+// Movies.jsx
 import React, { useState, useEffect } from "react";
 import { getAllMovies } from "../api/api";
 import { Link, useLocation, useOutletContext } from "react-router-dom";
