@@ -83,7 +83,7 @@ input {
   color:  #d4d4e4;
   background-color: #7e7575;
   /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
-      
+        border-radius: 4px;
  
 }
 label{
@@ -140,12 +140,14 @@ label{
   color:  #d4d4e4;
   background-color: #7e7575;
   /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
-  
+      border-radius: 4px;
 }
 .theme-light input {
   color:  #0d0d0e;
   background-color: #c7dfee;
-  /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
+  /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+   */
+      border-radius: 4px;
 }
 
 

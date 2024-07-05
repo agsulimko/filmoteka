@@ -337,7 +337,7 @@ const Movies = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              padding: "10px 2px",
+              padding: "10px 0",
               gap: "5px",
             }}
           >
@@ -346,11 +346,21 @@ const Movies = () => {
               type="text"
               name="title"
               size="small"
-              sx={{ m: 1, width: "35ch", margin: 0 }}
+              sx={{
+                m: 1,
+                width: "35ch",
+                margin: 0,
+                borderRadius: "4px",
+                "& fieldset": {
+                  border: "none",
+                  // Border color for the outlined input
+                },
+              }}
               style={{
                 backgroundColor: "#7e7575",
                 color: "white",
               }}
+              // #c7dfee #7e7575
               InputLabelProps={{
                 style: { zIndex: 100000 },
                 className: css.inputLabel,
@@ -365,7 +375,7 @@ const Movies = () => {
               type="submit"
               variant="outlined"
               sx={{
-                padding: "6px 125px",
+                padding: "6px 127px",
                 "@media screen and (min-width: 768px)": {
                   padding: "6px",
                 },
