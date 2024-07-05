@@ -1,3 +1,7 @@
+.inputLabel {
+    z-index: 1;
+    
+}
 .divForm{
     position: fixed;
     background-color: rgba(239, 237, 232, 0.6);
@@ -15,6 +19,7 @@ flex-wrap: wrap;
  gap:15px;
  justify-content: center;
     /* background-color: rgb(212, 242, 232); */
+    padding-top: 105px;
 }
 .divGoBack{
 position: relative;
@@ -30,9 +35,7 @@ padding-top: 40px;
     width: 150px;
     
     }
-    .theme-light  .input{
-        /* background-color: #7e7575; */
-    }
+
   .pagination {
       margin-top: 30px;
       text-align: center;
@@ -46,8 +49,11 @@ padding-top: 40px;
       position: absolute;
       top: -30px;
     right: 62px;
+    background-color: #808080;
       
   }
+   
+   
 
 @media screen and (min-width: 768px) {
     .selectedLanguage {
@@ -59,12 +65,17 @@ padding-top: 40px;
 .selectedLanguage {
   right: 76px;
         }
-    .listMovies {gap: 20px;}
+    .listMovies {gap: 20px;
+    padding-top: 60px;
+    }
     .box{
         flex-direction: row;
     }
     .divForm{
       padding: 0px 168px;  
+    }
+    .button{
+        padding: 6.5px;
     }
 }
 

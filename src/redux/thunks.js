@@ -1,6 +1,6 @@
 // thunks.js
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getAllMoviesTrending } from 'api/api';
+import { getAllMoviesTrending, getAllMovies, getDefaultMovies } from 'api/api';
 
 import axios from 'axios';
 
@@ -28,6 +28,51 @@ export const fetchAllMoviesTrending = createAsyncThunk(
         results.push(...pageResults);
       }
       return { page: 1, results, total_pages: 1000, total_results: 20000 };
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const fetchAllMovies = createAsyncThunk(
+  'movies/fetchAllMovies',
+  async ({ query, page, language }, { rejectWithValue }) => {
+    try {
+      const response = await getAllMovies(query, page, language);
+      return response;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+// export const fetchDefaultMovies = createAsyncThunk(
+//   'movies/fetchDefaultMovies',
+//   async ({ page, language }) => {
+//     const response = await getDefaultMovies(page, language);
+
+//     return response;
+//   }
+// );
+
+export const fetchDefaultMovies = createAsyncThunk(
+  'movies/fetchDefaultMovies',
+  async ({ page, language }, { rejectWithValue }) => {
+    try {
+      const firstSet = await getDefaultMovies(page, language);
+      const secondSet = await getDefaultMovies(page + 1, language);
+
+      const combinedResults = [
+        ...firstSet.data.results,
+        ...secondSet.data.results,
+      ];
+
+      return {
+        page,
+        results: combinedResults,
+        total_pages: Math.ceil(firstSet.data.total_results / 40),
+        total_results: firstSet.data.total_results,
+      };
     } catch (error) {
       return rejectWithValue(error.response.data);
     }

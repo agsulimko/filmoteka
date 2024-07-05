@@ -1,7 +1,11 @@
 // slice.js
 import { createSlice } from '@reduxjs/toolkit';
 
-import { fetchAllMoviesTrending } from './thunks';
+import {
+  fetchAllMoviesTrending,
+  fetchAllMovies,
+  fetchDefaultMovies,
+} from './thunks';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -16,6 +20,9 @@ const handleRejected = (state, action) => {
 
 const initialState = {
   movies: [],
+  allMovies: [],
+  defaultMovies: [],
+
   page: 1,
   results: [],
   total_pages: 0,
@@ -42,7 +49,30 @@ const moviesSlice = createSlice({
         state.results = page === 1 ? results : [...state.results, ...results];
         state.total_pages = total_pages;
       })
-      .addCase(fetchAllMoviesTrending.rejected, handleRejected);
+      .addCase(fetchAllMoviesTrending.rejected, handleRejected)
+      .addCase(fetchAllMovies.pending, handlePending)
+      .addCase(fetchAllMovies.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.status = 'succeeded';
+        state.allMovies = action.payload;
+        const { page, results, total_pages } = action.payload;
+        state.page = page;
+        state.results = page === 1 ? results : [...state.results, ...results];
+        state.total_pages = total_pages;
+      })
+      .addCase(fetchAllMovies.rejected, handleRejected)
+
+      .addCase(fetchDefaultMovies.pending, handlePending)
+      .addCase(fetchDefaultMovies.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.status = 'succeeded';
+        state.defaultMovies = action.payload;
+        const { page, results, total_pages } = action.payload;
+        state.page = page;
+        state.results = page === 1 ? results : [...state.results, ...results];
+        state.total_pages = total_pages;
+      })
+      .addCase(fetchDefaultMovies.rejected, handleRejected);
   },
 });
 

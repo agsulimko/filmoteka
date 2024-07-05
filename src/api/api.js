@@ -1,3 +1,4 @@
+// api.js
 import axios from 'axios';
 axios.defaults.baseURL = 'https://api.themoviedb.org/';
 axios.defaults.params = {
@@ -62,11 +63,11 @@ export const getVideos = async (moveId, language) => {
   return data;
 };
 
-export const getAllMovies = async (value, page, language) => {
+export const getAllMovies = async (value, page, language, limit) => {
   const { data } = await axios(`3/search/movie`, {
     params: {
       page: page,
-      // limit: limit,
+      limit,
       // api_key: '0649efc971b913d6bfebf656f94b5c92',
       // // language: 'en-US',
       // original_language: 'en-US',
@@ -80,9 +81,14 @@ export const getAllMovies = async (value, page, language) => {
   return data;
 };
 
-// export const fetchPage = async (page, language) => {
-//   const response = await axios.get('3/trending/movie/day', {
-//     params: { page, language },
-//   });
-//   return response.data.results;
-// };
+export const getDefaultMovies = async (page, language, limit) => {
+  const response = await axios.get(`3/movie/popular`, {
+    params: {
+      page,
+      language,
+      limit: limit,
+    },
+  });
+
+  return response;
+};
