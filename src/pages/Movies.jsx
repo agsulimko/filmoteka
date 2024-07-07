@@ -21,6 +21,7 @@ const Movies = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const movies = useSelector(selectAllMovies) || [];
+  //
   const defaultMovies = useSelector(selectDefaultMovies) || [];
 
   const totalPages = useSelector(selectTotalPages);
@@ -42,12 +43,23 @@ const Movies = () => {
     );
   }, [dispatch, selectedLanguage]);
 
+  // useEffect(() => {
+  //   const fetchMovies = ({
+  //     query,
+  //     page: currentPage,
+  //     language: selectedLanguage,
+  //   }) => {
+  //     dispatch(
+  //       fetchAllMovies({
+  //         query,
+  //         page: currentPage,
+  //         language: selectedLanguage,
+  //       })
+  //     );
+  //   };
+
   useEffect(() => {
-    const fetchMovies = ({
-      query,
-      page: currentPage,
-      language: selectedLanguage,
-    }) => {
+    if (query) {
       dispatch(
         fetchAllMovies({
           query,
@@ -55,14 +67,27 @@ const Movies = () => {
           language: selectedLanguage,
         })
       );
-    };
-
-    fetchMovies({
-      query,
-      page: currentPage,
-      language: selectedLanguage,
-    });
+    } else {
+      dispatch(
+        fetchDefaultMovies({
+          page: currentPage,
+          language: selectedLanguage,
+        })
+      );
+    }
   }, [dispatch, currentPage, selectedLanguage, query]);
+  //   fetchMovies({
+  //     query,
+  //     page: currentPage,
+  //     language: selectedLanguage,
+  //   });
+  // }, [dispatch, currentPage, selectedLanguage, query]);
+
+  // useEffect(() => {
+  //   dispatch(
+  //     fetchAllMovies({ query, page: currentPage, language: selectedLanguage })
+  //   );
+  // }, [dispatch, currentPage, selectedLanguage, query]);
 
   const handleInputQuery = (event) => {
     const textInput = event.target.value.trim().toLowerCase();

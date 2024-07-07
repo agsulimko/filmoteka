@@ -378,9 +378,7 @@ const Home = () => {
   const loading = useSelector(selectLoading);
   const totalPages = useSelector(selectTotalPages);
   const [currentPage, setCurrentPage] = useState(1);
-  // const [selectedLanguage, setSelectedLanguage] = useState(
-  //   localStorage.getItem("selectedLanguage") || "en-US"
-  // );
+
   const [showBackToTop, setShowBackToTop] = useState(false);
   const { selectedLanguage } = useOutletContext(); // Получаем selectedLanguage из контекста
 

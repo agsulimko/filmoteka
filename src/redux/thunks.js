@@ -39,12 +39,37 @@ export const fetchAllMovies = createAsyncThunk(
   async ({ query, page, language }, { rejectWithValue }) => {
     try {
       const response = await getAllMovies(query, page, language);
+
       return response;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
   }
 );
+// export const fetchAllMovies = createAsyncThunk(
+//   'movies/fetchAllMovies',
+//   async ({ query, page, language }, { rejectWithValue }) => {
+//     try {
+//       const firstSet = await getAllMovies(query, page, language);
+//       const secondSet = await getAllMovies(query, page + 1, language);
+
+//       const combinedResults = [
+//         ...firstSet.data.results,
+//         ...secondSet.data.results,
+//       ];
+//       console.log(combinedResults);
+
+//       return {
+//         page,
+//         results: combinedResults,
+//         total_pages: Math.ceil(firstSet.data.total_results / 40),
+//         total_results: firstSet.data.total_results,
+//       };
+//     } catch (error) {
+//       return rejectWithValue(error.response.data);
+//     }
+//   }
+// );
 
 // export const fetchDefaultMovies = createAsyncThunk(
 //   'movies/fetchDefaultMovies',

@@ -62,24 +62,46 @@ export const getVideos = async (moveId, language) => {
   // console.log('videos=', data);
   return data;
 };
-
-export const getAllMovies = async (value, page, language, limit) => {
-  const { data } = await axios(`3/search/movie/popular`, {
+export const getAllMovies = async (value, page, language) => {
+  const { data: firstBatch } = await axios(`3/search/movie`, {
     params: {
-      page: page,
-      limit,
-      // api_key: '0649efc971b913d6bfebf656f94b5c92',
-      // // language: 'en-US',
-      // original_language: 'en-US',
-      // query: `Jack + Reacher`,
-      query: `${value}`,
-      language: language,
+      page,
+      query: value,
+      language,
     },
   });
-  // console.log(value);
-  // console.log('getAllMovies=>>', data);
-  return data;
+  const { data: secondBatch } = await axios(`3/search/movie`, {
+    params: {
+      page: page + 1,
+      query: value,
+      language,
+    },
+  });
+  const combinedResults = {
+    ...firstBatch,
+    results: [...firstBatch.results, ...secondBatch.results],
+  };
+
+  return combinedResults;
 };
+
+// export const getAllMovies = async (value, page, language, limit) => {
+//   const { data } = await axios(`3/search/movie`, {
+//     params: {
+//       page: page,
+//       limit:limit,
+//       // api_key: '0649efc971b913d6bfebf656f94b5c92',
+//       // // language: 'en-US',
+//       // original_language: 'en-US',
+//       // query: `Jack + Reacher`,
+//       query: `${value}`,
+//       language: language,
+//     },
+//   });
+//   // console.log(value);
+//   // console.log('getAllMovies=>>', data);
+//   return data;
+// };
 
 export const getDefaultMovies = async (page, language, limit) => {
   const response = await axios.get(`3/movie/popular`, {
