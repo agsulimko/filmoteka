@@ -30,6 +30,7 @@ const Layout = () => {
     }
     // Apply the theme from local storage
     document.documentElement.className = localStorage.getItem("theme");
+
     // eslint-disable-next-line
   }, [selectedLanguage]);
 

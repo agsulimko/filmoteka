@@ -16,7 +16,9 @@ import {
   selectDefaultMovies,
 } from "../redux/selectors";
 import Loader from "components/Loader/Loader";
-
+import { toast } from "react-hot-toast";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 const Movies = () => {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -31,7 +33,7 @@ const Movies = () => {
   const [searchQuery, setSearchQuery] = useSearchParams();
 
   const query = searchQuery.get("query") ?? "";
-  const { selectedLanguage } = useOutletContext();
+  const { selectedLanguage, theme } = useOutletContext();
 
   useEffect(() => {
     setCurrentPage(1);
@@ -94,16 +96,42 @@ const Movies = () => {
     setInputValue(textInput);
   };
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   if (!inputValue) {
+  //     alert("Enter your request");
+  //     return;
+  //   }
+
+  //   setCurrentPage(1);
+  //   setSearchQuery({ query: inputValue });
+  // };
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!inputValue) {
-      alert("Enter your request");
-      return;
-    }
+      setSearchQuery({ query: "" });
+      (localStorage.getItem("theme") !== "theme-light" ? alert : toast.error)(
+        "Enter your request",
+        {
+          autoClose: 5000,
+          position: "top-center",
 
-    setCurrentPage(1);
-    setSearchQuery({ query: inputValue });
+          style: {
+            marginTop: "130px",
+            // background: "#efede8",
+            background: theme === "theme-dark" ? "#333" : "#efede8",
+            color: theme === "theme-dark" ? "#fff" : "#000",
+            zIndex: 99999999,
+          },
+        }
+      );
+      return;
+    } else {
+      setCurrentPage(1);
+      setSearchQuery({ query: inputValue });
+    }
   };
 
   const handleNextPage = () => {
