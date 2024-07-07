@@ -64,7 +64,7 @@ export const getVideos = async (moveId, language) => {
 };
 
 export const getAllMovies = async (value, page, language, limit) => {
-  const { data } = await axios(`3/search/movie`, {
+  const { data } = await axios(`3/search/movie/popular`, {
     params: {
       page: page,
       limit,
