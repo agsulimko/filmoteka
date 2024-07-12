@@ -159,7 +159,7 @@ const Movies = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              padding: "10px 0",
+              padding: "10px 1.5px",
               gap: "5px",
             }}
           >
@@ -198,7 +198,7 @@ const Movies = () => {
               type="submit"
               variant="outlined"
               sx={{
-                padding: "6px 127px",
+                padding: "6px 124px",
                 "@media screen and (min-width: 768px)": {
                   padding: "6px",
                 },

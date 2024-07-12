@@ -16,7 +16,7 @@
     display: flex;
     display: flex;
 flex-wrap: wrap;
- gap:15px;
+ gap:8px;
  justify-content: center;
     /* background-color: rgb(212, 242, 232); */
     padding-top: 105px;
@@ -24,6 +24,7 @@ flex-wrap: wrap;
 .divGoBack{
 position: relative;
 padding-top: 40px;
+/* width: 315px; */
 } 
 .home{
     display: flex;
@@ -59,6 +60,10 @@ padding-top: 40px;
     .selectedLanguage {
         right: 86px;
     }
+        .divGoBack {
+            
+            /* width: 700px; */
+        }
  .home {
  gap: 20px;
         }   
