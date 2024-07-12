@@ -112,21 +112,19 @@ const Movies = () => {
 
     if (!inputValue) {
       setSearchQuery({ query: "" });
-      (localStorage.getItem("theme") !== "theme-light" ? alert : toast.error)(
-        "Enter your request",
-        {
-          autoClose: 5000,
-          position: "top-center",
 
-          style: {
-            marginTop: "130px",
-            // background: "#efede8",
-            background: theme === "theme-dark" ? "#333" : "#efede8",
-            color: theme === "theme-dark" ? "#fff" : "#000",
-            zIndex: 99999999,
-          },
-        }
-      );
+      toast.error("Enter your request", {
+        autoClose: 5000,
+        position: "top-center",
+
+        style: {
+          marginTop: "130px",
+          // background: "#efede8",
+          background: theme === "theme-dark" ? "#333" : "#efede8",
+          color: theme === "theme-dark" ? "#fff" : "#000",
+          zIndex: 99999999,
+        },
+      });
       return;
     } else {
       setCurrentPage(1);
@@ -196,6 +194,7 @@ const Movies = () => {
               variant="outlined"
             />
             <Button
+              className="custom-button"
               type="submit"
               variant="outlined"
               sx={{

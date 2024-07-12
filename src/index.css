@@ -4,7 +4,7 @@
 
 :root {
   /*base colors*/
-  /* --black-color: #040404; */
+ /* --black-color: #040404;  */
   --orange-color: #e6533c;
   --light-orange-color: #ef8964;
   --beige-color: #efa082;
@@ -80,15 +80,15 @@ a{
 }
 
 input {
-  color:  #d4d4e4;
-  background-color: #7e7575;
+  /* color:  #d4d4e4;
+  background-color: #7e7575; */
   /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
-        border-radius: 4px;
- 
+        /* border-radius: 4px;
+  */
+    /* color:  #0d0d0e;
+      background-color: #c7dfee;  */
 }
-label{
-  z-index: 10002;
-}
+
 
  main{
   color:  #eae9f2;
@@ -103,13 +103,14 @@ label{
 } 
 .theme-dark {
   color: #f2f2f2;
-  background-color:#292727;}
+  /* background-color:#292727; */
+}
 
 
 
 .theme-light {
-  color: #080808;
-  background-color: #eae9f2;
+  /* color: #080808;
+  background-color: #eae9f2; */
 }
 
 .theme-dark main {
@@ -119,9 +120,11 @@ label{
 }
 
 .theme-dark div {
-  color:  #eae9f2;
-  background-color: #292727;
-  z-index: 10001;
+    background-color: #292727;
+   
+  /* color:  #eae9f2;
+
+  z-index: 10001; */
   /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
   /* box-shadow: 0 2px 8px rgba(247, 240, 240, 0.7); */
   
@@ -134,27 +137,27 @@ label{
    /* box-shadow: 0 2px 8px rgba(247, 240, 240, 0.9);  */
   
 }
+.theme-light input {
+   color:  #0d0d0e;
+  background-color: #c7dfee; 
+  /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+   */
+      /* border-radius: 4px; */
+}
 
 
 .theme-dark input {
-  color:  #d4d4e4;
-  background-color: #7e7575;
+   color:  #d4d4e4;
+  background-color: #7e7575; 
   /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
       border-radius: 4px;
-}
-.theme-light input {
-  color:  #0d0d0e;
-  background-color: #c7dfee;
-  /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-   */
-      border-radius: 4;
 }
 
 
 .theme-light header{
-  color:  #110850;
+  /* color:  #110850; */
   background-color: #5e5a81;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); 
 }
 .theme-dark header{
   color:  #110850;
@@ -162,9 +165,7 @@ label{
   box-shadow: 0 2px 2px rgba(156, 154, 154, 0.2);
 }
 .theme-light header{
-  color:  #110850;
-  background-color: #5e5a81;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+ 
 }
 
 .theme-dark a{
@@ -178,12 +179,20 @@ label{
   
 }
 .theme-dark select {
-  background-color: #ccc;
+  /* background-color: #ccc; */
   /* background-color: #5e5a81; */
   /* color: #e1dfee; */
   /* color: #6a6970 */
   
 }
 
+
+
+.theme-dark .custom-button {
+  background-color: #515154;
+}
+.theme-dark form {
+  background-color: rgba(0, 0, 0, 1);
+}
 
 

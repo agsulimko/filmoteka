@@ -16,7 +16,7 @@
    box-shadow: 0 2px 2px rgba(156, 154, 154, 0.2);
    padding: 0 5px;
    z-index: 100000;
-    width: 315px;
+    width: 320px;
  }
 .listLayout{
         display: flex;
@@ -84,8 +84,8 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #292727;
-    /* background-color: #ccc; */
+    /* background-color: #4f3a3a; */
+    background-color: #ccc;
     -webkit-transition: 0.4s;
     transition: 0.4s;
   }
@@ -109,8 +109,8 @@
   }
   
   input:checked + .slider {
-     /* background-color: #2196f3;  */
-      background-color: #ccc;
+     background-color: #2196f3; 
+      /* background-color: #ccc; */
  
   }
   
@@ -136,4 +136,6 @@
   .slider.round:before {
     border-radius: 50%;
   }
+
+
   

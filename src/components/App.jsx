@@ -6,8 +6,8 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 import { lazy } from "react";
 import Loader from "./Loader/Loader";
-import { ThemeProvider } from "@mui/material/styles"; // Import ThemeProvider
-import { theme } from "../styles/theme-file"; // Import your theme object
+// import { ThemeProvider } from "@mui/material/styles"; // Import ThemeProvider
+// import { theme } from "../styles/theme-file"; // Import your theme object
 import { useSelector } from "react-redux";
 import { selectLoading } from "../redux/selectors";
 const Home = lazy(() => import("../pages/Home"));
@@ -24,30 +24,30 @@ const HomePage = lazy(() => import("./HomePage"));
 export const App = () => {
   const loading = useSelector(selectLoading);
   return (
-    <ThemeProvider theme={theme}>
-      <Suspense fallback={<Loader />}>
-        {loading && <Loader />}
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
+    // <ThemeProvider theme={theme}>
+    <Suspense fallback={<Loader />}>
+      {loading && <Loader />}
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
 
-            <Route path="movies" element={<Movies />} />
-            <Route path=":movieId" element={<MoviesDetails />}>
-              <Route path="trailer" element={<Trailer />} />
-              <Route path="cast" element={<Cast />} />
+          <Route path="movies" element={<Movies />} />
+          <Route path=":movieId" element={<MoviesDetails />}>
+            <Route path="trailer" element={<Trailer />} />
+            <Route path="cast" element={<Cast />} />
 
-              <Route path="reviews" element={<Reviews />} />
-              <Route path="homepage" element={<HomePage />} />
-            </Route>
+            <Route path="reviews" element={<Reviews />} />
+            <Route path="homepage" element={<HomePage />} />
+          </Route>
 
-            {/* <Route path="movies/:movieId" element={<MoviesDetails />}>
+          {/* <Route path="movies/:movieId" element={<MoviesDetails />}>
             <Route path="cast" element={<Cast />} />
 
             <Route path="reviews" element={<Reviews />} />
           </Route> */}
-          </Route>
-        </Routes>
-      </Suspense>
-    </ThemeProvider>
+        </Route>
+      </Routes>
+    </Suspense>
+    // </ThemeProvider>
   );
 };
