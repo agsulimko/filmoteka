@@ -4,7 +4,7 @@
 
 :root {
   /*base colors*/
- /* --black-color: #040404;  */
+/* --black-color: #040404;  */
   --orange-color: #e6533c;
   --light-orange-color: #ef8964;
   --beige-color: #efa082;
@@ -15,6 +15,7 @@
   --success-color: #3cbf61;
   --error-color: #d80027;
 }
+
 
 h1,
 h2,
@@ -52,6 +53,7 @@ body  {
   line-height: 1.5;
   max-width: 1400px;
   margin:0 auto; 
+  height: 100%;
  /* padding: 0 15px; */
 }
 
@@ -104,13 +106,19 @@ input {
 .theme-dark {
   color: #f2f2f2;
   /* background-color:#292727; */
+  background-color: rgb(41, 39, 39);
+}
+.theme-dark #root {
+
+
+  background-color: rgb(41, 39, 39);
 }
 
 
 
 .theme-light {
-  /* color: #080808;
-  background-color: #eae9f2; */
+  color: #080808;
+  background-color: #eae9f2;
 }
 
 .theme-dark main {
