@@ -184,7 +184,7 @@ const Movies = () => {
               }}
               // #c7dfee #7e7575
               InputLabelProps={{
-                style: { zIndex: 100000 },
+                // style: { zIndex: 100000 },
                 className: css.inputLabel,
               }}
               onChange={handleInputQuery}
