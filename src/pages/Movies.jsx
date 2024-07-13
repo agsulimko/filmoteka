@@ -164,7 +164,7 @@ const Movies = () => {
             }}
           >
             <TextField
-              className={css.input}
+              className="input"
               type="text"
               name="title"
               size="small"
