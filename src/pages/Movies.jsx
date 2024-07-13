@@ -198,7 +198,7 @@ const Movies = () => {
               type="submit"
               variant="outlined"
               sx={{
-                padding: "6px 124px",
+                padding: "6px 125px",
                 "@media screen and (min-width: 768px)": {
                   padding: "6px",
                 },
