@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/filmoteka/static/css/main.545b7491.css",
+    "main.css": "/filmoteka/static/css/main.1e5e586a.css",
     "main.js": "/filmoteka/static/js/main.ba539eb0.js",
     "static/css/339.891915ec.chunk.css": "/filmoteka/static/css/339.891915ec.chunk.css",
     "static/js/339.53cb309b.chunk.js": "/filmoteka/static/js/339.53cb309b.chunk.js",
@@ -37,7 +37,7 @@
     "static/media/Roboto-Bold.ttf": "/filmoteka/static/media/Roboto-Bold.f80816a5455d171f948d.ttf",
     "static/media/sprite.svg": "/filmoteka/static/media/sprite.6664253bba6a57891f27ac02965fbc91.svg",
     "index.html": "/filmoteka/index.html",
-    "main.545b7491.css.map": "/filmoteka/static/css/main.545b7491.css.map",
+    "main.1e5e586a.css.map": "/filmoteka/static/css/main.1e5e586a.css.map",
     "main.ba539eb0.js.map": "/filmoteka/static/js/main.ba539eb0.js.map",
     "339.891915ec.chunk.css.map": "/filmoteka/static/css/339.891915ec.chunk.css.map",
     "339.53cb309b.chunk.js.map": "/filmoteka/static/js/339.53cb309b.chunk.js.map",
@@ -71,7 +71,7 @@
     "710.253bda7f.chunk.js.map": "/filmoteka/static/js/710.253bda7f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.545b7491.css",
+    "static/css/main.1e5e586a.css",
     "static/js/main.ba539eb0.js"
   ]
 }
