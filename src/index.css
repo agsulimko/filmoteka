@@ -4,7 +4,9 @@
 
 :root {
   /*base colors*/
-/* --black-color: #040404;  */
+/* --black-color: rgb(41, 39, 39); */
+--black-color: #040404; 
+
   --orange-color: #e6533c;
   --light-orange-color: #ef8964;
   --beige-color: #efa082;
@@ -53,7 +55,7 @@ body  {
   line-height: 1.5;
   max-width: 1400px;
   margin:0 auto; 
-  height: 100%;
+   height: 100%; 
  /* padding: 0 15px; */
 }
 
@@ -68,12 +70,16 @@ a{
   text-decoration: none;
 }
 
-/* .container{
-  max-width: 1400px;
-   margin: auto; 
-  padding: 0 15px;
-  /* background-color: #4f4f68; 
-} */
+.theme-dark #root {
+
+  
+   background-color: rgb(41, 39, 39);
+}
+.theme-light #root{
+  
+   
+   background-color: #eae9f2;
+}
 /*  */
 .theme-dark header{
   /* color:  #110850;
@@ -113,6 +119,7 @@ input {
 
   background-color: rgb(41, 39, 39);
 }
+
 
 
 
@@ -199,9 +206,9 @@ input {
 .theme-dark .custom-button {
   background-color: #515154;
 }
-.theme-dark form {
+/* .theme-dark form {
   background-color: rgba(0, 0, 0, 1);
-}
+} */
 
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- style="margin: 0 auto; width: 1440px; align-content: center" -->
-
-<html lang="en" class="theme-light">
+<!-- class="theme-light" -->
+<html lang="en">
   <!-- <html lang="en" class="theme-dark"> -->
   <head>
     <meta charset="utf-8" />
@@ -60,10 +60,23 @@
       })(window.location);
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
+    <!-- <style>
+      body.container {
+        margin: 0 auto;
+        height: 100%;
+      }
+      .theme-dark body.container {
+        background-color: rgb(41, 39, 39);
+      }
+
+      .theme-light body.container {
+        background-color: white;
+      }
+    </style> -->
   </head>
-  <body class="container" style="margin: 0 auto">
+  <body class="container" style="margin: 0 auto; height: 100%">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root" class="theme-light"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
