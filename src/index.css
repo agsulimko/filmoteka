@@ -5,7 +5,7 @@
 :root {
   /*base colors*/
 /* --black-color: rgb(41, 39, 39); */
---black-color: #040404; 
+/* --black-color: #040404;  */
 
   --orange-color: #e6533c;
   --light-orange-color: #ef8964;
@@ -70,16 +70,19 @@ a{
   text-decoration: none;
 }
 
-.theme-dark #root {
-
-  
-   background-color: rgb(41, 39, 39);
+.box {
+  flex-direction: column;
 }
-.theme-light #root{
+.theme-dark .box {
+   background-color: rgba(41, 39, 39, 0.8);
+}
+
+
+ .theme-light .box{
   
    
-   background-color: #eae9f2;
-}
+   background-color: rgba(234, 233, 242, 0.8);
+}  
 /*  */
 .theme-dark header{
   /* color:  #110850;
@@ -114,11 +117,11 @@ input {
   /* background-color:#292727; */
   background-color: rgb(41, 39, 39);
 }
-.theme-dark #root {
+/* .theme-dark #root {
 
 
   background-color: rgb(41, 39, 39);
-}
+} */
 
 
 
@@ -134,16 +137,7 @@ input {
   /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
 }
 
-.theme-dark div {
-    background-color: #292727;
-   
-  /* color:  #eae9f2;
 
- 
-  /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
-  /* box-shadow: 0 2px 8px rgba(247, 240, 240, 0.7); */
-  
-}
 
 .theme-dark .cardCast div {
   color:  #eae9f2;
@@ -213,5 +207,12 @@ input {
 
 
 
+@media screen and (min-width: 768px) {
 
+
+  .box {
+    flex-direction: row;
+  }
+
+}
 

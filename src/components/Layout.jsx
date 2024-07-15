@@ -102,7 +102,7 @@ import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 import { Suspense } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import Loader from "./Loader/Loader";
+import { Loader } from "./Loader/Loader";
 import filmotekaIcon from "../helper/filmoteka.png";
 import { Container } from "../styles/Container/Container";
 
@@ -118,26 +118,44 @@ const Layout = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(
     localStorage.getItem("selectedLanguage") || "en-US"
   );
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") || "theme-light"
-  );
+  // const [theme, setTheme] = useState(
+  //   localStorage.getItem("theme") || "theme-light"
+  // );
 
   useEffect(() => {
     localStorage.setItem("selectedLanguage", selectedLanguage);
+    if (!localStorage.getItem("theme")) {
+      localStorage.setItem("theme", "theme-light");
+    }
+    // Apply the theme from local storage
+    document.documentElement.className = localStorage.getItem("theme");
+    // eslint-disable-next-line
   }, [selectedLanguage]);
 
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+  // useEffect(() => {
+  //   localStorage.setItem("theme", theme);
+  // }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme((prevTheme) =>
-      prevTheme === "theme-dark" ? "theme-light" : "theme-dark"
-    );
-  };
+  function setTheme(themeName) {
+    localStorage.setItem("theme", themeName);
+    document.documentElement.className = themeName;
+  }
+  // function to toggle between light and dark theme
+  function toggleTheme() {
+    if (localStorage.getItem("theme") === "theme-dark") {
+      setTheme("theme-light");
+    } else {
+      setTheme("theme-dark");
+    }
+  }
+  // const toggleTheme = () => {
+  //   setTheme((prevTheme) =>
+  //     prevTheme === "theme-dark" ? "theme-light" : "theme-dark"
+  //   );
+  // };
 
   return (
-    <Container className={theme}>
+    <Container>
       <div className={css.container}>
         <header className={css.header}>
           <StyledLink to="/">
@@ -169,17 +187,13 @@ const Layout = () => {
           </select>
 
           <label id="switch" className={css.switch}>
-            <input
-              type="checkbox"
-              onChange={toggleTheme}
-              checked={theme === "theme-dark"}
-            />
+            <input type="checkbox" onChange={toggleTheme} id="slider" />
             <span className={`${css.slider} ${css.round}`}></span>
           </label>
         </header>
         <main>
           <Suspense fallback={<Loader />}>
-            <Outlet context={{ selectedLanguage, theme }} />
+            <Outlet context={{ selectedLanguage }} />
           </Suspense>
         </main>
       </div>

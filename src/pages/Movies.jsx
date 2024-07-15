@@ -15,7 +15,7 @@ import {
   selectTotalPages,
   selectDefaultMovies,
 } from "../redux/selectors";
-import Loader from "components/Loader/Loader";
+import { Loader } from "components/Loader/Loader";
 import { toast } from "react-hot-toast";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
@@ -33,7 +33,7 @@ const Movies = () => {
   const [searchQuery, setSearchQuery] = useSearchParams();
 
   const query = searchQuery.get("query") ?? "";
-  const { selectedLanguage, theme } = useOutletContext();
+  const { selectedLanguage } = useOutletContext();
 
   useEffect(() => {
     setCurrentPage(1);
@@ -109,7 +109,7 @@ const Movies = () => {
   // };
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    const theme = localStorage.getItem("theme");
     if (!inputValue) {
       setSearchQuery({ query: "" });
 
@@ -122,7 +122,6 @@ const Movies = () => {
           // background: "#efede8",
           background: theme === "theme-dark" ? "#333" : "#efede8",
           color: theme === "theme-dark" ? "#fff" : "#000",
-          zIndex: 99999999,
         },
       });
       return;
@@ -154,13 +153,21 @@ const Movies = () => {
       <div className={css.divForm}>
         <form onSubmit={handleSubmit}>
           <Box
-            className={css.box}
+            className="box"
             sx={{
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               padding: "10px 1.5px",
               gap: "5px",
+              "@media screen and (min-width: 768px)": {
+                paddingLeft: "168px",
+                paddingRight: "168px",
+              },
+              "@media screen and (min-width: 1440px)": {
+                paddingLeft: "498px",
+                paddingRight: "498px",
+              },
             }}
           >
             <TextField

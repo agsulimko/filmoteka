@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 import { selectLoading } from "../redux/selectors";
 import { getMoviesTrending } from "../api/api";
 import css from "./MoviesDetails.module.css";
-import Loader from "./Loader/Loader";
+import { Loader } from "./Loader/Loader";
 import sprite from "../helper/sprite.svg";
 const MoviesDetails = () => {
   const location = useLocation();

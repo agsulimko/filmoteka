@@ -369,7 +369,7 @@ import {
   selectLoading,
   selectTotalPages,
 } from "../redux/selectors";
-import Loader from "components/Loader/Loader";
+import { Loader } from "components/Loader/Loader";
 
 const Home = () => {
   const location = useLocation();

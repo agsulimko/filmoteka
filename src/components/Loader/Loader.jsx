@@ -1,8 +1,20 @@
+// import RingLoader from "react-spinners/MoonLoader";
+
+// import { LoaderBackdrop } from "./Loader.styled";
+
+// export const Loader = () => {
+//   return (
+//     <LoaderBackdrop>
+//       <RingLoader color="#dbe2e2" size={50} />
+//     </LoaderBackdrop>
+//   );
+// };
+// =============================================
 import React from "react";
 import { ColorRing } from "react-loader-spinner";
 import css from "./Loader.module.css";
 
-const Loader = () => {
+export const Loader = () => {
   return (
     <div className={css.loaderWrap} style={{ backgroundColor: "transparent" }}>
       <ColorRing
@@ -18,8 +30,6 @@ const Loader = () => {
     </div>
   );
 };
-
-export default Loader;
 
 // const Loader = () => {
 // 	const { isLoading } = useSelector(selectorAppState)

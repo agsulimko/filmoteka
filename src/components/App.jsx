@@ -5,7 +5,7 @@ import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 import { lazy } from "react";
-import Loader from "./Loader/Loader";
+import { Loader } from "./Loader/Loader";
 // import { ThemeProvider } from "@mui/material/styles"; // Import ThemeProvider
 // import { theme } from "../styles/theme-file"; // Import your theme object
 import { useSelector } from "react-redux";
