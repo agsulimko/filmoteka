@@ -158,7 +158,7 @@ const Movies = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              padding: "10px 1.5px",
+              padding: "10px 0.5px",
               gap: "5px",
               "@media screen and (min-width: 768px)": {
                 paddingLeft: "168px",
