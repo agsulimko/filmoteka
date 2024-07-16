@@ -161,12 +161,12 @@ const Movies = () => {
               padding: "10px 0.5px",
               gap: "5px",
               "@media screen and (min-width: 768px)": {
-                paddingLeft: "168px",
-                paddingRight: "168px",
+                // paddingLeft: "168px",
+                // paddingRight: "168px",
               },
               "@media screen and (min-width: 1440px)": {
-                paddingLeft: "498px",
-                paddingRight: "498px",
+                // paddingLeft: "498px",
+                // paddingRight: "498px",
               },
             }}
           >
@@ -177,7 +177,7 @@ const Movies = () => {
               size="small"
               sx={{
                 m: 1,
-                width: "35ch",
+                // width: "35ch",
                 margin: 0,
                 borderRadius: "4px",
                 // "& fieldset": {
@@ -205,7 +205,7 @@ const Movies = () => {
               type="submit"
               variant="outlined"
               sx={{
-                padding: "6px 125px",
+                // padding: "6px 125px",
                 "@media screen and (min-width: 768px)": {
                   padding: "6px",
                 },

@@ -90,7 +90,9 @@ a{
   box-shadow: 0 2px 2px rgba(156, 154, 154, 0.2); */
 }
 
-input {
+.input {
+
+  width: 315px;
   /* color:  #d4d4e4;
   background-color: #7e7575; */
   /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
@@ -107,6 +109,10 @@ input {
   /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
 } 
 
+
+form{
+  width: 315px;
+}
 .theme-light main{
   color:  #110850;
   background-color: #eae9f2;
@@ -204,7 +210,9 @@ input {
   background-color: rgba(0, 0, 0, 1);
 } */
 
-
+.custom-button{
+  width: 315px;
+}
 
 
 @media screen and (min-width: 768px) {
@@ -213,6 +221,20 @@ input {
   .box {
     flex-direction: row;
   }
+    form {
+      width: 730px;
+    }
+        .custom-button {
+          width: 315px;
+        }
 
 }
 
+@media screen and (min-width: 1440px) {
+
+
+form {
+    width: 1390px;
+  }
+
+}
