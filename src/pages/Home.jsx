@@ -367,7 +367,7 @@ import { fetchAllMoviesTrending } from "../redux/thunks";
 import {
   selectMovies,
   selectLoading,
-  selectTotalPages,
+  selectTotalPagesAllMoviesTrending,
 } from "../redux/selectors";
 import { Loader } from "components/Loader/Loader";
 
@@ -376,11 +376,13 @@ const Home = () => {
   const dispatch = useDispatch();
   const movies = useSelector(selectMovies) || [];
   const loading = useSelector(selectLoading);
-  const totalPages = useSelector(selectTotalPages);
+  const totalPages = useSelector(selectTotalPagesAllMoviesTrending);
   const [currentPage, setCurrentPage] = useState(1);
 
   const [showBackToTop, setShowBackToTop] = useState(false);
   const { selectedLanguage } = useOutletContext(); // Получаем selectedLanguage из контекста
+  // console.log(totalPages);
+  // console.log(currentPage);
 
   useEffect(() => {
     localStorage.setItem("selectedLanguage", selectedLanguage);
