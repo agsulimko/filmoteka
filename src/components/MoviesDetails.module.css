@@ -1,5 +1,10 @@
+.GoBack{
+margin: auto;
+padding-top: 45px;
+        }
+
 .divGoBack {
-    position: relative;
+position: relative;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -7,16 +12,29 @@ gap: 10px;
 padding-top: 10px;
 }
 
- .GoBack{
-margin: auto;
-padding-top: 45px;
-        }
+ 
 
 .button_GoBack{
 background-color: #d9cfe4;
  border: 0.5px solid #110850;;
  border-radius: 5px;
 }
+
+.button_GoBack:hover {
+    background-color: #bfb2d8;
+    color: red;
+    transform: scale(1.05);
+}
+
+.button_GoBack:focus {
+    outline: 2px solid #7c6ed6;
+    outline-offset: 3px;
+    background-color: #a899d4;
+    color: red;
+}
+
+
+
 
 .divDetails{
     display: flex;

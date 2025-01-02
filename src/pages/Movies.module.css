@@ -1,7 +1,4 @@
-.inputLabel {
-    /* z-index: 1; */
-    
-}
+
 .divForm{
     position: fixed;
     /* background-color: rgba(239, 237, 232, 0.6); */
@@ -88,9 +85,7 @@ padding-top: 40px;
     .divForm {
             /* padding: 0px 498px; */
   }
-  div{
-    
-  }
+ 
     }
 
  
