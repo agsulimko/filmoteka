@@ -116,7 +116,7 @@ const MoviesDetails = () => {
         <button className={css.button_GoBack} type="button">
           <span>
             <svg className={css.svgGoBack}>
-              <use href={`${sprite}#icon-arrow-left-gray`}></use>
+              <use href={`${sprite}#icon-arrow-left`}></use>
             </svg>
           </span>
           Go back

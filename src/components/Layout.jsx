@@ -73,6 +73,11 @@ const Layout = () => {
                 Movies
               </StyledLink>
             </li>
+            <li>
+              <StyledLink to="/actors" state={{ selectedLanguage }}>
+                Actors
+              </StyledLink>
+            </li>
           </ul>
 
           <select

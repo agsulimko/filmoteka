@@ -96,11 +96,23 @@
 			</path>
 		</symbol>
 		<symbol id="icon-arrow-left" viewBox="0 0 42 32">
-			<path fill="none" stroke="#e6533c" style="stroke: var(--color3, #e6533c)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4.8" d="M18.133 29.333l-13.333-13.333M4.8 16l13.333-13.333M4.8 16h32">
+			<path fill="none"
+			 stroke="var(--arrow-color, #e6533c)"  
+    stroke-linejoin="round"  
+    stroke-linecap="round"  
+    stroke-miterlimit="4"  
+    stroke-width="4.8"  
+    d="M18.133 29.333l-13.333-13.333M4.8 16l13.333-13.333M4.8 16h32"  >
 			</path>
 		</symbol>
 		<symbol id="icon-arrow-left-gray" viewBox="0 0 42 32">
-			<path fill="none" stroke=" rgba(0, 0, 0, 1) " style="stroke: rgba(0, 0, 0, 1)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4.8" d="M18.133 29.333l-13.333-13.333M4.8 16l13.333-13.333M4.8 16h32">
+			<path fill="none" stroke="var(--arrow-color, rgba(0, 0, 0, 1))"  
+    stroke-linejoin="round"  
+    stroke-linecap="round"  
+    stroke-miterlimit="4"  
+    stroke-width="4.8"  
+    d="M18.133 29.333l-13.333-13.333M4.8 16l13.333-13.333M4.8 16h32"  
+  >
 			</path>
 		</symbol>
 		<symbol id="icon-arrow-right" viewBox="0 0 42 32">

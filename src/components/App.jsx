@@ -12,6 +12,8 @@ import { useSelector } from "react-redux";
 import { selectLoading } from "../redux/selectors";
 const Home = lazy(() => import("../pages/Home"));
 const Movies = lazy(() => import("../pages/Movies"));
+const Actors = lazy(() => import("../pages/Actors"));
+
 const MoviesDetails = lazy(() => import("./MoviesDetails"));
 
 const Trailer = lazy(() => import("./Trailer"));
@@ -32,6 +34,7 @@ export const App = () => {
           <Route index element={<Home />} />
 
           <Route path="movies" element={<Movies />} />
+          <Route path="actors" element={<Actors />} />
           <Route path=":movieId" element={<MoviesDetails />}>
             <Route path="trailer" element={<Trailer />} />
             <Route path="cast" element={<Cast />} />
