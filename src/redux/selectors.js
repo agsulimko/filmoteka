@@ -12,3 +12,5 @@ export const selectTotalPagesAllMoviesTrending = state =>
 // export const selectTotalPagesAllMovies = state => state.movies.total_pages;
 // export const selectTotalPagesDefaultMovies = state => state.movies.total_pages;
 export const selectTotalPages = state => state.movies.total_pages;
+
+export const selectPopularActors = state => state.movies.popularActors;

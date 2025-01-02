@@ -60,31 +60,9 @@ export const getVideos = async (moveId, language) => {
       language: language,
     },
   });
-  // console.log('videos=', data);
+
   return data;
 };
-// export const getAllMovies = async (value, page, language) => {
-//   const { data: firstBatch } = await axios(`3/search/movie`, {
-//     params: {
-//       page,
-//       query: value,
-//       language,
-//     },
-//   });
-//   const { data: secondBatch } = await axios(`3/search/movie`, {
-//     params: {
-//       page: page + 1,
-//       query: value,
-//       language,
-//     },
-//   });
-//   const combinedResults = {
-//     ...firstBatch,
-//     results: [...firstBatch.results, ...secondBatch.results],
-//   };
-
-//   return combinedResults;
-// };
 
 export const getAllMovies = async (value, page, language, limit) => {
   const response = await axios(`3/search/movie`, {
@@ -115,4 +93,37 @@ export const getDefaultMovies = async (page, language, limit) => {
   });
   // console.log('getDefaultMovies=', response);
   return response;
+};
+
+// Получение списка популярных актеров
+// export const getPopularActors = async (page = 1, language = 'en-US') => {
+//   const response = await axios.get(`3/person/popular`, {
+//     params: {
+//       page,
+//       language,
+//     },
+//   });
+//   return response.data.results; // Возвращаем только массив актеров
+// };
+
+export const getPopularActors = async (page, language) => {
+  const response = await axios.get(`3/person/popular`, {
+    params: {
+      page: page,
+
+      language: language,
+    },
+  });
+  console.log('getPopularActors =', response);
+  return response.data.results; // Возвращаем только массив актеров
+};
+
+// Получение списка фильмов актера
+export const getActorMovies = async (actorId, language = 'en-US') => {
+  const response = await axios.get(`3/person/${actorId}/movie_credits`, {
+    params: {
+      language,
+    },
+  });
+  return response.data.cast; // Возвращаем только список фильмов
 };

@@ -5,6 +5,7 @@ import {
   fetchAllMoviesTrending,
   fetchAllMovies,
   fetchDefaultMovies,
+  fetchPopularActors,
 } from './thunks';
 
 const handlePending = state => {
@@ -22,6 +23,7 @@ const initialState = {
   movies: [],
   allMovies: [],
   defaultMovies: [],
+  popularActors: [],
 
   page: 1,
   results: [],
@@ -72,7 +74,16 @@ const moviesSlice = createSlice({
         state.results = page === 1 ? results : [...state.results, ...results];
         state.total_pages = total_pages;
       })
-      .addCase(fetchDefaultMovies.rejected, handleRejected);
+      .addCase(fetchDefaultMovies.rejected, handleRejected)
+
+      .addCase(fetchPopularActors.pending, handlePending)
+      .addCase(fetchPopularActors.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.status = 'succeeded';
+        state.popularActors = action.payload.results; // Сохраняем только массив актеров
+        state.page = action.payload.page;
+      })
+      .addCase(fetchPopularActors.rejected, handleRejected);
   },
 });
 

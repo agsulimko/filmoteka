@@ -1,0 +1,58 @@
+.container {
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    max-width: 200px;
+    text-align: center;
+}
+
+.image {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.name {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.rating {
+    font-size: 1em;
+    color: #555;
+}
+
+.subtitle {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+.moviesList {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+h1{
+text-align: center;
+ padding-top: 45px;
+}
