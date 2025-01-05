@@ -35,18 +35,19 @@
     padding: 0 15px;
     width: 730px;
   }
-  .listLayout{gap: 40px;}
+  .listLayout{gap: 20px;
+  margin-top: 2px;}
 
    .selectedLanguage{
     margin-left: 336px;
    }
 }
- @media screen and (min-width: 1440px) {
+ @media screen and (min-width: 1240px) {
     .selectedLanguage {
-        margin-left: 985px;
+        margin-left: 685px;
       }
                 .header {
-                  width: 1390px;
+                  width: 1190px;
                 }
  }
       

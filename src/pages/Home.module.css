@@ -25,6 +25,12 @@ width: 150px;
 
 }
 
+.home_div:hover {
+    /* background-color: #bfb2d8; */
+    /* color: red; */
+    transform: scale(1.05);
+}
+
 .pagination{
     margin-top: 30px;
     text-align: center;

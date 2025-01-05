@@ -91,7 +91,7 @@ export const fetchDefaultMovies = createAsyncThunk(
       // console.log(response.data.total_pages);
       // console.log(response.data.total_results);
       for (let i = 1; i <= page; i++) {
-        const pageResults = await getDefaultMovies(i, page, language);
+        const pageResults = await getDefaultMovies(i, language);
 
         results.push(...pageResults.data.results);
       }
