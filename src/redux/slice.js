@@ -6,6 +6,7 @@ import {
   fetchAllMovies,
   fetchDefaultMovies,
   fetchPopularActors,
+  fetchTopRatedMovies,
 } from './thunks';
 
 const handlePending = state => {
@@ -24,6 +25,7 @@ const initialState = {
   allMovies: [],
   defaultMovies: [],
   popularActors: [],
+  popularMovies: [],
 
   page: 1,
   results: [],
@@ -39,6 +41,18 @@ const moviesSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
+      .addCase(fetchTopRatedMovies.pending, handlePending)
+      .addCase(fetchTopRatedMovies.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.status = 'succeeded';
+        state.popularMovies = action.payload.results;
+        const { page, results, total_pages } = action.payload;
+        state.page = page;
+
+        state.results = page === 1 ? results : [...state.results, ...results];
+        state.total_pages = total_pages;
+      })
+      .addCase(fetchTopRatedMovies.rejected, handleRejected)
 
       .addCase(fetchAllMoviesTrending.pending, handlePending)
       .addCase(fetchAllMoviesTrending.fulfilled, (state, action) => {

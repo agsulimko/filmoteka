@@ -363,17 +363,25 @@ import { Link, useLocation, useOutletContext } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import css from "./Home.module.css";
 import { BackToTopButton } from "./Home.styled";
-import { fetchAllMoviesTrending } from "../redux/thunks";
+import { fetchAllMoviesTrending, fetchTopRatedMovies } from "../redux/thunks";
 import {
   selectMovies,
   selectLoading,
   selectTotalPagesAllMoviesTrending,
+  selectTopRatedMovies,
 } from "../redux/selectors";
 import { Loader } from "components/Loader/Loader";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/autoplay";
+import "swiper/css/effect-cards";
+import "swiper/css/effect-coverflow";
+// import { EffectCoverflow, Navigation } from "swiper";
 
 const Home = () => {
   const location = useLocation();
   const dispatch = useDispatch();
+  const topMovies = useSelector(selectTopRatedMovies) || [];
   const movies = useSelector(selectMovies) || [];
   const loading = useSelector(selectLoading);
   const totalPages = useSelector(selectTotalPagesAllMoviesTrending);
@@ -383,6 +391,14 @@ const Home = () => {
   const { selectedLanguage } = useOutletContext(); // Получаем selectedLanguage из контекста
   // console.log(totalPages);
   // console.log(currentPage);
+
+  // get top rated movies
+  useEffect(() => {
+    localStorage.setItem("selectedLanguage", selectedLanguage);
+    setCurrentPage(1); // Reset current page
+    dispatch(fetchTopRatedMovies({ page: 1, language: selectedLanguage }));
+    dispatch(fetchAllMoviesTrending({ page: 1, language: selectedLanguage }));
+  }, [dispatch, selectedLanguage]);
 
   useEffect(() => {
     localStorage.setItem("selectedLanguage", selectedLanguage);
@@ -428,6 +444,72 @@ const Home = () => {
 
   return (
     <div className={css.homeMovies}>
+      <h2>Top Rated movies</h2>
+
+      <div
+        container
+        spacing={1}
+        rowSpacing={1}
+        mb={6}
+        component="section"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <div container spacing={1} padding="8px" mb={5}>
+          <Swiper
+            effect={"coverflow"}
+            grabCursor={true}
+            centeredSlides={true}
+            // modules={[EffectCoverflow, Navigation]}
+            loop={true}
+            slidesPerView={"auto"}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.5,
+            }}
+            breakpoints={{
+              // when window width is >= 320px
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 0,
+              },
+              // when window width is >= 640px
+              640: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+              },
+              // when window width is >= 1040px
+              1040: {
+                slidesPerView: 5,
+                spaceBetween: 50,
+              },
+            }}
+          >
+            {topMovies.map((movie) => {
+              return (
+                <SwiperSlide key={movie.id}>
+                  <Link to={`${movie.id}`} state={{ from: location }}>
+                    <div className={css.home_div}>
+                      <img
+                        className="center-block img-responsive"
+                        width="150px"
+                        height="100%"
+                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                        alt={movie.title}
+                      />
+                      {`${movie.title} (${movie.release_date.slice(0, 4)})`}
+                    </div>
+                  </Link>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+      </div>
+
       <h1>Trending today</h1>
 
       <div className={css.home}>

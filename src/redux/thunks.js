@@ -5,6 +5,7 @@ import {
   getAllMovies,
   getDefaultMovies,
   getPopularActors,
+  getTopRatedMovies,
 } from 'api/api';
 
 import axios from 'axios';
@@ -14,18 +15,36 @@ axios.defaults.params = {
   api_key: '0649efc971b913d6bfebf656f94b5c92',
   // language: 'en-US',
 };
+export const fetchTopRatedMovies = createAsyncThunk(
+  'movies/fetchTopRatedMovies',
+  async ({ page, language }, { rejectWithValue }) => {
+    try {
+      const results = [];
+      const response = await getTopRatedMovies(page, language);
+      // console.log(response.data.total_pages);
+      // console.log(response.data.total_results);
+      for (let i = 1; i <= page; i++) {
+        const pageResults = await getTopRatedMovies(i, language);
+
+        results.push(...pageResults.data.results);
+      }
+
+      return {
+        page: page,
+        results,
+        total_pages: response.data.total_pages,
+        total_results: response.data.total_results,
+      };
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 // 40 и более фильмов на странице
 export const fetchAllMoviesTrending = createAsyncThunk(
   'movies/fetchAllMoviesTrending',
   async ({ page, language }, { rejectWithValue }) => {
-    // try {
-    //   const response = await axios.get('3/trending/movie/day', {
-    //     params: { page, language },
-    //   });
-    //   console.log(response.data);
-    //   return response.data;
-    // }
     try {
       const results = [];
       const response = await getAllMoviesTrending(page, language);

@@ -6,6 +6,21 @@ axios.defaults.params = {
   // language: 'en-US',
 };
 
+export const getTopRatedMovies = async (page, language, limit) => {
+  try {
+    const { data } = await axios.get('3/movie/top_rated', {
+      params: {
+        page: page,
+        limit: limit,
+        language: language,
+      },
+    });
+    return data;
+  } catch (error) {
+    throw new Error('Oops, there is no movies');
+  }
+};
+
 export const getAllMoviesTrending = async (page, language, limit) => {
   //   const { data } = await axios(`3/trending/movie/day`, {
   const response = await axios(`3/trending/movie/day`, {
@@ -96,21 +111,10 @@ export const getDefaultMovies = async (page, language, limit) => {
 };
 
 // Получение списка популярных актеров
-// export const getPopularActors = async (page = 1, language = 'en-US') => {
-//   const response = await axios.get(`3/person/popular`, {
-//     params: {
-//       page,
-//       language,
-//     },
-//   });
-//   return response.data.results; // Возвращаем только массив актеров
-// };
-
 export const getPopularActors = async (page, language) => {
   const response = await axios.get(`3/person/popular`, {
     params: {
       page: page,
-
       language: language,
     },
   });
