@@ -5,7 +5,8 @@ import { useParams, useOutletContext } from "react-router-dom";
 import css from "./Trailer.module.css";
 import styled from "styled-components";
 import { getVideos } from "api/api";
-
+import { FaYoutube } from "react-icons/fa";
+import { Btn } from "./Trailer.module.styled";
 const StyledReactPlayer = styled(ReactPlayer)`
   margin: 0 auto 10px auto;
   max-width: 100%;
@@ -80,12 +81,10 @@ const Trailer = () => {
             {!hasOfficialOrTrailer(video.name) && (
               <div className={css.DivPlayerName}>
                 <div className={css.DivButtonTrailes}>
-                  <button
-                    className={css.ButtonTrailes}
-                    onClick={() => playVideo(video.key)}
-                  >
-                    Play Video
-                  </button>
+                  <Btn onClick={() => playVideo(video.key)}>
+                    <FaYoutube size="64px" color="red" />
+                  </Btn>
+
                   <h5 className={css.h5_Title}>
                     {video.name} (
                     {new Date(video.published_at).toLocaleDateString("en-US", {

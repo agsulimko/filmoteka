@@ -13,6 +13,9 @@ import { getMoviesTrending } from "../api/api";
 import css from "./MoviesDetails.module.css";
 import { Loader } from "./Loader/Loader";
 import sprite from "../helper/sprite.svg";
+// import { FaYoutube } from "react-icons/fa";
+// import { Btn } from "./Trailer.module.styled";
+
 const MoviesDetails = () => {
   const location = useLocation();
   const loading = useSelector(selectLoading);
@@ -33,6 +36,7 @@ const MoviesDetails = () => {
   const [genres, setGenres] = useState([]);
   const [error, setError] = useState("");
   const { selectedLanguage } = useOutletContext(); // Получаем selectedLanguage из контекста
+  // const [trailerKey, setTrailerKey] = useState(null); // Состояние для трейлера
 
   const fetchMovies = async (language) => {
     try {
@@ -146,6 +150,9 @@ const MoviesDetails = () => {
           {genres.map((genre, index) => {
             return <p key={index}>{genre.name} </p>;
           })}
+          {/* <Btn onClick={() => playVideo(video.key)}>
+            <FaYoutube size="64px" color="red" />
+          </Btn> */}
         </div>
       </div>
       <div>
